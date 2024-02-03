@@ -73,7 +73,7 @@ export default {
            this.form.parent_id =  localStorage.getItem('userid');
             var res = await this.callApi('post', `/api/register`, this.form);
             Notification.customSuccess(`Your data has been Updated`);
-            this.getData();
+            this.$router.push({name:'Userslist',params:{status:'active'}})
         }
     },
 }

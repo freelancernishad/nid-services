@@ -86,8 +86,9 @@ export default {
             this.preLooding = true;
             this.form.userid = localStorage.getItem('userid');
             var res = await this.callApi('post', `/api/payments`, this.form);
-            console.log(res);
+
             Notification.customSuccess(`Your data has been Updated`);
+            this.$router.push({name:'paymentl'})
             this.preLooding = false;
         }
     },

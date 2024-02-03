@@ -3773,8 +3773,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 4:
                 res = _context.sent;
-                console.log(res);
                 Notification.customSuccess("Your data has been Updated");
+
+                _this.$router.push({
+                  name: 'paymentl'
+                });
+
                 _this.preLooding = false;
 
               case 8:
@@ -3973,7 +3977,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 res = _context.sent;
                 Notification.customSuccess("Your data has been Updated");
 
-                _this.getData();
+                _this.$router.push({
+                  name: 'Userslist',
+                  params: {
+                    status: 'active'
+                  }
+                });
 
               case 6:
               case "end":
@@ -5800,7 +5809,7 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "flaticon-dashboard"
-  }), _c("span", [_vm._v("Payments")])])], 1), _vm._v(" "), _vm.$localStorage.getItem("role") == "admin" ? _c("li", {
+  }), _c("span", [_vm._v("Payments")])])], 1), _vm._v(" "), _vm.$localStorage.getItem("user") == "admin" || _vm.$localStorage.getItem("role") == "agent" ? _c("li", {
     staticClass: "nav-item",
     on: {
       click: function click($event) {
@@ -5819,7 +5828,7 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "flaticon-dashboard"
-  }), _c("span", [_vm._v("Users")])])], 1) : _vm._e(), _vm._v(" "), _vm.$localStorage.getItem("role") == "admin" ? _c("li", {
+  }), _c("span", [_vm._v("Users")])])], 1) : _vm._e(), _vm._v(" "), _vm.$localStorage.getItem("user") == "admin" || _vm.$localStorage.getItem("role") == "agent" ? _c("li", {
     staticClass: "nav-item",
     on: {
       click: function click($event) {
