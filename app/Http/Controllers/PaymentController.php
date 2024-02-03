@@ -144,14 +144,21 @@ class PaymentController extends Controller
     }
 
 
-    public function paymentsForUser($userId)
+    public function paymentsForUser(Request $request,$userId)
     {
         $user = User::findOrFail($userId);
 
-        $payments = Payment::where('userid', $userId)
+        if($request->role=='admin'){
+            $payments = Payment::with('user')
+            ->orderBy('id','desc')
+            ->paginate(20); // Adjust the pagination size as needed
+        }else{
+            $payments = Payment::where('userid', $userId)
             ->with('user')
             ->orderBy('id','desc')
             ->paginate(20); // Adjust the pagination size as needed
+        }
+
 
         return response()->json($payments);
     }

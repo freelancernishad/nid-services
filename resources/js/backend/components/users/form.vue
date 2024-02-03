@@ -1,4 +1,11 @@
 <template>
+    <div>
+
+    <preloader  v-if="preLooding"/>
+
+<Breadcrumbs brename="Add New User"/>
+
+
     <form @submit.stop.prevent="onSubmit">
         <div class="row">
             <div class="col-md-6">
@@ -28,13 +35,16 @@
 
             <div class="col-md-6">
                 <div class="form-group ">
-                    <label class="form-control-label font-weight-bold">Status </label>
-                    <select class="form-control" v-model="form.status">
-                        <option value="active">Active</option>
-                        <option value="banned">Banned</option>
+                    <label class="form-control-label font-weight-bold">Role </label>
+                    <select class="form-control" v-model="form.role">
+                        <option value="">Select</option>
+                        <option value="admin"  v-if="$localStorage.getItem('role')=='admin'">Admin</option>
+                        <option value="Agent" v-if="$localStorage.getItem('role')=='admin' || $localStorage.getItem('role')=='Agent'">Agent</option>
+                        <option value="user">User</option>
                     </select>
                 </div>
             </div>
+
 
             <div class="col-md-12">
                 <div class="form-group">
@@ -44,6 +54,7 @@
             </div>
         </div>
     </form>
+</div>
 </template>
 <script>
 export default {
@@ -53,14 +64,14 @@ export default {
                 name: null,
                 email: null,
                 password: null,
-                status: null,
+                role: 'user',
             },
         }
     },
     methods: {
         async onSubmit() {
-            var id = this.$route.params.id;
-            var res = await this.callApi('put', `/api/admin/user/${id}`, this.form);
+           this.form.parent_id =  localStorage.getItem('userid');
+            var res = await this.callApi('post', `/api/register`, this.form);
             Notification.customSuccess(`Your data has been Updated`);
             this.getData();
         }

@@ -3129,6 +3129,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['user', 'permission', 'roles'],
   created: function created() {
+    localStorage.setItem('userid', this.user.id);
+    localStorage.setItem('role', this.user.role);
+
     if (!User.loggedIn()) {
       window.location.href = '/';
     }
@@ -3155,6 +3158,15 @@ __webpack_require__.r(__webpack_exports__);
       sidebarstatus: false,
       mobileSidebar: false
     };
+  },
+  watch: {
+    '$route': {
+      handler: function handler(newValue, oldValue) {
+        localStorage.setItem('userid', this.user.id);
+        localStorage.setItem('role', this.user.role);
+      },
+      deep: true
+    }
   },
   methods: {
     myscroll: function myscroll() {
@@ -3863,7 +3875,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }
 
                 _context2.next = 5;
-                return _this2.callApiPaginate("/api/payments/user/".concat(localStorage.getItem('userid'), "?page=").concat(page), page);
+                return _this2.callApiPaginate("/api/payments/user/".concat(localStorage.getItem('userid'), "?page=").concat(page, "&role=").concat(localStorage.getItem('role')), page);
 
               case 5:
                 res = _context2.sent;
@@ -3939,7 +3951,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         name: null,
         email: null,
         password: null,
-        status: null
+        role: 'user'
       }
     };
   },
@@ -3948,14 +3960,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var id, res;
+        var res;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                id = _this.$route.params.id;
+                _this.form.parent_id = localStorage.getItem('userid');
                 _context.next = 3;
-                return _this.callApi('put', "/api/admin/user/".concat(id), _this.form);
+                return _this.callApi('post', "/api/register", _this.form);
 
               case 3:
                 res = _context.sent;
@@ -4027,7 +4039,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       applicationRoute: '/document',
       viewRoute: 'UsersView',
       approveRoute: '',
-      cancelRoute: '/api/user',
+      cancelRoute: '',
       canceltext: 'banned',
       approveType: '',
       approveData: '',
@@ -4080,7 +4092,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 auto = _arguments.length > 0 && _arguments[0] !== undefined ? _arguments[0] : false;
                 _context.next = 3;
-                return _this.callApi('get', "/api/admin/user?status=".concat(_this.$route.params.status), []);
+                return _this.callApi('get', "/api/admin/user?role=".concat(localStorage.getItem('role'), "&userid=").concat(localStorage.getItem('userid')), []);
 
               case 3:
                 res = _context.sent;
@@ -5788,7 +5800,42 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "flaticon-dashboard"
-  }), _c("span", [_vm._v("Payments")])])], 1)])])]), _vm._v(" "), _c("div", {
+  }), _c("span", [_vm._v("Payments")])])], 1), _vm._v(" "), _vm.$localStorage.getItem("role") == "admin" ? _c("li", {
+    staticClass: "nav-item",
+    on: {
+      click: function click($event) {
+        return _vm.submenu(0);
+      }
+    }
+  }, [_c("router-link", {
+    staticClass: "nav-link",
+    attrs: {
+      to: {
+        name: "Userslist",
+        params: {
+          status: "active"
+        }
+      }
+    }
+  }, [_c("i", {
+    staticClass: "flaticon-dashboard"
+  }), _c("span", [_vm._v("Users")])])], 1) : _vm._e(), _vm._v(" "), _vm.$localStorage.getItem("role") == "admin" ? _c("li", {
+    staticClass: "nav-item",
+    on: {
+      click: function click($event) {
+        return _vm.submenu(0);
+      }
+    }
+  }, [_c("router-link", {
+    staticClass: "nav-link",
+    attrs: {
+      to: {
+        name: "Usersform"
+      }
+    }
+  }, [_c("i", {
+    staticClass: "flaticon-dashboard"
+  }), _c("span", [_vm._v("Add User")])])], 1) : _vm._e()])])]), _vm._v(" "), _c("div", {
     staticClass: "dashboard-content-one"
   }, [_vm._t("default")], 2)])]);
 };
@@ -6560,10 +6607,10 @@ var render = function render() {
     staticClass: "table-responsive"
   }, [_c("table", {
     staticClass: "table"
-  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.lists, function (list, index) {
+  }, [_c("thead", [_c("tr", [_c("th", [_vm._v("SL")]), _vm._v(" "), _vm.$localStorage.getItem("role") == "admin" ? _c("th", [_vm._v("User Id ")]) : _vm._e(), _vm._v(" "), _vm.$localStorage.getItem("role") == "admin" ? _c("th", [_vm._v("Name ")]) : _vm._e(), _vm._v(" "), _vm.$localStorage.getItem("role") == "admin" ? _c("th", [_vm._v("Email ")]) : _vm._e(), _vm._v(" "), _c("th", [_vm._v("Trx Id")]), _vm._v(" "), _c("th", [_vm._v("Method")]), _vm._v(" "), _c("th", [_vm._v("Date")]), _vm._v(" "), _c("th", [_vm._v("Amount")]), _vm._v(" "), _c("th", [_vm._v("Status")]), _vm._v(" "), _vm.$localStorage.getItem("role") == "admin" ? _c("th", [_vm._v("Action")]) : _vm._e()])]), _vm._v(" "), _c("tbody", _vm._l(_vm.lists, function (list, index) {
     return _c("tr", {
       key: index
-    }, [_c("td", [_vm._v(_vm._s(index + _vm.pageNO))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(list.trxid))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(list.method))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(list.date))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(list.amount))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(list.status))]), _vm._v(" "), _c("td", [list.status == "Pending" || list.status == "approved" ? _c("button", {
+    }, [_c("td", [_vm._v(_vm._s(index + _vm.pageNO))]), _vm._v(" "), _vm.$localStorage.getItem("role") == "admin" ? _c("td", [_vm._v(_vm._s(list.user.id))]) : _vm._e(), _vm._v(" "), _vm.$localStorage.getItem("role") == "admin" ? _c("td", [_vm._v(_vm._s(list.user.name))]) : _vm._e(), _vm._v(" "), _vm.$localStorage.getItem("role") == "admin" ? _c("td", [_vm._v(_vm._s(list.user.email))]) : _vm._e(), _vm._v(" "), _c("td", [_vm._v(_vm._s(list.trxid))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(list.method))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(list.date))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(list.amount))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(list.status))]), _vm._v(" "), _vm.$localStorage.getItem("role") == "admin" ? _c("td", [list.status == "Pending" || list.status == "approved" ? _c("button", {
       staticClass: "btn btn-danger",
       on: {
         click: function click($event) {
@@ -6577,7 +6624,7 @@ var render = function render() {
           return _vm.approvePayment(list.id);
         }
       }
-    }, [_vm._v("Approve")]) : _vm._e()])]);
+    }, [_vm._v("Approve")]) : _vm._e()]) : _vm._e()]);
   }), 0)])])]), _vm._v(" "), _c("div", {
     staticClass: "card-footer"
   }, [_c("Paginate", {
@@ -6591,12 +6638,7 @@ var render = function render() {
   })], 1)])], 1);
 };
 
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("thead", [_c("tr", [_c("th", [_vm._v("SL")]), _vm._v(" "), _c("th", [_vm._v("Trx Id")]), _vm._v(" "), _c("th", [_vm._v("Method")]), _vm._v(" "), _c("th", [_vm._v("Date")]), _vm._v(" "), _c("th", [_vm._v("Amount")]), _vm._v(" "), _c("th", [_vm._v("Status")]), _vm._v(" "), _c("th", [_vm._v("Action")])])]);
-}];
+var staticRenderFns = [];
 render._withStripped = true;
 
 
@@ -6643,7 +6685,11 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("form", {
+  return _c("div", [_vm.preLooding ? _c("preloader") : _vm._e(), _vm._v(" "), _c("Breadcrumbs", {
+    attrs: {
+      brename: "Add New User"
+    }
+  }), _vm._v(" "), _c("form", {
     on: {
       submit: function submit($event) {
         $event.stopPropagation();
@@ -6736,12 +6782,12 @@ var render = function render() {
     staticClass: "form-group"
   }, [_c("label", {
     staticClass: "form-control-label font-weight-bold"
-  }, [_vm._v("Status ")]), _vm._v(" "), _c("select", {
+  }, [_vm._v("Role ")]), _vm._v(" "), _c("select", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.form.status,
-      expression: "form.status"
+      value: _vm.form.role,
+      expression: "form.role"
     }],
     staticClass: "form-control",
     on: {
@@ -6753,18 +6799,26 @@ var render = function render() {
           return val;
         });
 
-        _vm.$set(_vm.form, "status", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+        _vm.$set(_vm.form, "role", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
       }
     }
   }, [_c("option", {
     attrs: {
-      value: "active"
+      value: ""
     }
-  }, [_vm._v("Active")]), _vm._v(" "), _c("option", {
+  }, [_vm._v("Select")]), _vm._v(" "), _vm.$localStorage.getItem("role") == "admin" ? _c("option", {
     attrs: {
-      value: "banned"
+      value: "admin"
     }
-  }, [_vm._v("Banned")])])])]), _vm._v(" "), _vm._m(3)])]);
+  }, [_vm._v("Admin")]) : _vm._e(), _vm._v(" "), _vm.$localStorage.getItem("role") == "admin" || _vm.$localStorage.getItem("role") == "Agent" ? _c("option", {
+    attrs: {
+      value: "Agent"
+    }
+  }, [_vm._v("Agent")]) : _vm._e(), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "user"
+    }
+  }, [_vm._v("User")])])])]), _vm._v(" "), _vm._m(3)])])], 1);
 };
 
 var staticRenderFns = [function () {
@@ -6782,7 +6836,7 @@ var staticRenderFns = [function () {
 
   return _c("label", {
     staticClass: "form-control-label font-weight-bold"
-  }, [_vm._v("Email\n                    "), _c("span", {
+  }, [_vm._v("Email\n                        "), _c("span", {
     staticClass: "text-danger"
   }, [_vm._v("*")])]);
 }, function () {
@@ -6807,7 +6861,7 @@ var staticRenderFns = [function () {
     attrs: {
       type: "submit"
     }
-  }, [_vm._v("Save Changes\n                ")])])]);
+  }, [_vm._v("Save Changes\n                    ")])])]);
 }];
 render._withStripped = true;
 
@@ -7757,7 +7811,7 @@ var routes = [//Auth Routes
     layout: adminlayout
   }
 }, {
-  path: "".concat(prefix, "/userlist/form/:id"),
+  path: "".concat(prefix, "/user/form"),
   component: Usersform,
   name: 'Usersform',
   meta: {
@@ -49953,7 +50007,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nth.position-relative {\r\n    font-size: 13px;\n}\ntd {\r\n    font-size: 14px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nth.position-relative {\n    font-size: 13px;\n}\ntd {\n    font-size: 14px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

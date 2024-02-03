@@ -68,7 +68,7 @@ export const routes = [
 
   { path:  `${prefix}/userlist/:status`, component: Userslist, name:'Userslist',meta: { layout: adminlayout } },
   { path:  `${prefix}/userlist/view/:id`, component: UsersView, name:'UsersView',meta: { layout: adminlayout } },
-  { path:  `${prefix}/userlist/form/:id`, component: Usersform, name:'Usersform',meta: { layout: adminlayout } },
+  { path:  `${prefix}/user/form`, component: Usersform, name:'Usersform',meta: { layout: adminlayout } },
 
 
 

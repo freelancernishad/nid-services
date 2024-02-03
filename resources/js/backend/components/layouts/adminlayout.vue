@@ -230,6 +230,17 @@
 
 
 
+                        <li  @click="submenu(0)"  class="nav-item"   v-if="$localStorage.getItem('role')=='admin'">
+                            <router-link :to="{name:'Userslist',params:{status:'active'}}" class="nav-link"><i class="flaticon-dashboard"></i><span>Users</span></router-link>
+                        </li>
+
+
+                        <li  @click="submenu(0)"  class="nav-item"   v-if="$localStorage.getItem('role')=='admin'">
+                            <router-link :to="{name:'Usersform'}" class="nav-link"><i class="flaticon-dashboard"></i><span>Add User</span></router-link>
+                        </li>
+
+
+
 
                         <!-- <li class="nav-item sidebar-nav-item" :class="{ active: selected == 101 }">
                             <a href="javascript:void(0)" class="nav-link" @click="submenu(101)"><i
@@ -321,7 +332,8 @@ export default {
      props: ['user','permission','roles'],
     created() {
 
-
+        localStorage.setItem('userid',this.user.id);
+        localStorage.setItem('role',this.user.role);
 
 
 
@@ -359,6 +371,17 @@ export default {
             mobileSidebar: false,
         }
     },
+
+    watch: {
+        '$route': {
+            handler(newValue, oldValue) {
+                localStorage.setItem('userid',this.user.id);
+                localStorage.setItem('role',this.user.role);
+            },
+            deep: true
+        }
+    },
+
     methods: {
 
         myscroll(){

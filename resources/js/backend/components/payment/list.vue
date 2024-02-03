@@ -19,24 +19,30 @@
                         <thead>
                             <tr>
                                 <th>SL</th>
+                                <th v-if="$localStorage.getItem('role')=='admin'">User Id </th>
+                                <th v-if="$localStorage.getItem('role')=='admin'">Name </th>
+                                <th v-if="$localStorage.getItem('role')=='admin'">Email </th>
                                 <th>Trx Id</th>
                                 <th>Method</th>
                                 <th>Date</th>
                                 <th>Amount</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                                <th v-if="$localStorage.getItem('role')=='admin'">Action</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             <tr v-for="(list,index) in lists" :key="index">
                                 <td>{{ index+pageNO }}</td>
+                                <td v-if="$localStorage.getItem('role')=='admin'">{{ list.user.id }}</td>
+                                <td v-if="$localStorage.getItem('role')=='admin'">{{ list.user.name }}</td>
+                                <td v-if="$localStorage.getItem('role')=='admin'">{{ list.user.email }}</td>
                                 <td>{{ list.trxid }}</td>
                                 <td>{{ list.method }}</td>
                                 <td>{{ list.date }}</td>
                                 <td>{{ list.amount }}</td>
                                 <td>{{ list.status }}</td>
-                                <td>
+                                <td  v-if="$localStorage.getItem('role')=='admin'">
 
                                     <button @click="approvePayment(list.id,'cancel')" class="btn btn-danger" v-if="list.status=='Pending' || list.status=='approved'">Cancel</button>
                                     <button @click="approvePayment(list.id)" class="btn btn-success" v-if="list.status=='Pending' || list.status=='Canceled'">Approve</button>
@@ -97,7 +103,9 @@ export default {
                 page = this.$route.query.page;
             }
 
-            var res = await this.callApiPaginate(`/api/payments/user/${localStorage.getItem('userid')}?page=${page}`,page);
+
+            var res = await this.callApiPaginate(`/api/payments/user/${localStorage.getItem('userid')}?page=${page}&role=${localStorage.getItem('role')}`,page);
+
             // console.log(res)
             this.lists = res
             this.preLooding = false

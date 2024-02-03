@@ -48,13 +48,10 @@
                             <div class="col-md-6">
 
                                 <select id="role" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required>
-
                                     <option value="">Select</option>
                                     <option value="admin">Admin</option>
                                     <option value="Agent">Agent</option>
                                     <option value="user">User</option>
-
-
                                 </select>
 
 

@@ -52,7 +52,7 @@ export default {
             applicationRoute: '/document',
             viewRoute: 'UsersView',
             approveRoute: '',
-            cancelRoute: '/api/user',
+            cancelRoute: '',
             canceltext: 'banned',
             approveType: '',
             approveData: '',
@@ -80,9 +80,7 @@ export default {
     watch: {
         '$route': {
             handler(newValue, oldValue) {
-
                 this.UserList();
-
             },
             deep: true
         }
@@ -90,22 +88,13 @@ export default {
     methods: {
 
         async UserList(auto = false) {
-
-                var res = await this.callApi('get', `/api/admin/user?status=${this.$route.params.status}`, []);
+                var res = await this.callApi('get', `/api/admin/user?role=${localStorage.getItem('role')}&userid=${localStorage.getItem('userid')}`, []);
                 this.items = res.data
                 this.TotalRows = `${this.items.length}`;
-
-
-
         }
     },
     mounted() {
-
-
-
-
         this.UserList();
-
     }
 }
 </script>

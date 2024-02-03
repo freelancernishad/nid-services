@@ -57,7 +57,7 @@ Route::resource('payments', PaymentController::class);
 Route::get('payments/user/{userId}', [PaymentController::class, 'paymentsForUser']);
 Route::get('payments/approve/{id}', [PaymentController::class, 'approvePayment']);
 Route::post('user/up/{id}/{bal}',[UserController::class,'balanceUpdate']);
-
+Route::post('/register', [UserController::class, 'registerUser']);
 
 
 

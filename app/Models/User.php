@@ -56,4 +56,34 @@ class User extends Authenticatable
     {
         return $this->hasMany(Payment::class, 'userid');
     }
+
+     // Relationship: Each user has a parent (referrer)
+     public function parent()
+     {
+         return $this->belongsTo(User::class, 'parent_id');
+     }
+
+     // Relationship: Each user has many children (downlines)
+     public function children()
+     {
+         return $this->hasMany(User::class, 'parent_id');
+     }
+
+     // Logic to add a child (downline) to a user
+     public function addChild(User $child)
+     {
+         $child->parent_id = $this->id;
+         $child->level = $this->level + 1;
+         $child->save();
+
+         if (!$this->left_leg) {
+             $this->left_leg = $child->id;
+         } elseif (!$this->right_leg) {
+             $this->right_leg = $child->id;
+         }
+
+         $this->save();
+     }
+
+
 }

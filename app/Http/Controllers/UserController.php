@@ -14,6 +14,27 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
 
+
+    public function registerUser(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
+        ]);
+
+        $validatedData['password'] = hash::make($request->password);
+
+        $user = User::create($validatedData);
+        $referrerId = $request->input('parent_id');
+        $referrer = User::find($referrerId);
+        if ($referrer) {
+            $referrer->addChild($user);
+        }
+        return response()->json(['message' => 'User registered successfully']);
+    }
+
+
     function balanceUpdate($id,$bal) {
 
         $user = User::find($id);
@@ -87,6 +108,19 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+
+        $role = $request->role;
+        if($role=='admin'){
+            return User::orderBy('id','desc')->get();
+        }else{
+            return User::where([
+                'parent_id' => $request->userid
+            ])->get();
+        }
+
+
+
+
         $status = $request->status;
         if ($status == 'all') {
             return User::all();
