@@ -157,15 +157,35 @@ class NidSearchedController extends Controller
 
         ]);
 
+
         $photoUrl = $request->photo;
 
         $photoUrl= nidImageSave($photoUrl);
 
         $validatedData['photo'] = $photoUrl;
+        $validatedData['search_date'] = date('Y-m-d');
         // Create a new NidSearched instance
 
 
         $nidSearched = NidSearched::create($validatedData);
+
+
+
+
+        // referral_commissions
+        $userid = $request->userid;
+        $user = User::findOrFail($userid);
+        $parent_id = $user->parent_id;
+        $parentuser = User::find($parent_id);
+        $amount = $parentuser->referral_commissions;
+        // Update the commission balance
+        // $parentuser->referral_commissions += $amount;
+        $parentuser->balance += $amount;
+        $parentuser->save();
+
+
+
+
 
         return response()->json($nidSearched, 201);
     }
@@ -231,23 +251,37 @@ class NidSearchedController extends Controller
         $totalusers = User::count();
         $totalForThisAgent = User::where(['parent_id'=>$userid])->count();
         $nidbalance = $user->nidbalance;
-        $nidSearchedTotal = NidSearched::where(['userid'=>$userid])->count();
-        $nidSearchedToday = NidSearched::where(['userid'=>$userid,'search_date'=>date('Y-m-d')])->count();
 
+
+        if($role=='admin'){
+            $nidSearchedTotal = NidSearched::count();
+            $nidSearchedToday = NidSearched::where(['search_date'=>date('Y-m-d')])->count();
+        }elseif($role=='agent'){
            // Get all child users (downlines)
            $children = $user->children;
 
            // Count total searches for all child users
-           $totalSearchesByChild = NidSearched::whereIn('userid', $children->pluck('id'))->count();
+           $nidSearchedTotal = NidSearched::whereIn('userid', $children->pluck('id'))->count();
 
            // Count today's searches for all child users
-           $todaySearchesByChild = NidSearched::whereIn('userid', $children->pluck('id'))
+           $nidSearchedToday = NidSearched::whereIn('userid', $children->pluck('id'))
                ->whereDate('search_date', Carbon::today())
                ->count();
+        }else{
+            $nidSearchedTotal = NidSearched::where(['userid'=>$userid])->count();
+            $nidSearchedToday = NidSearched::where(['userid'=>$userid,'search_date'=>date('Y-m-d')])->count();
+        }
 
 
 
 
+
+
+
+
+
+
+        $withdrawAbleBalance = $user->balance;
 
 
 
@@ -257,8 +291,7 @@ class NidSearchedController extends Controller
             'balance'=>$nidbalance,
             'nidSearchedTotal'=>$nidSearchedTotal,
             'nidSearchedToday'=>$nidSearchedToday,
-            'totalSearchesByChild'=>$totalSearchesByChild,
-            'todaySearchesByChild'=>$todaySearchesByChild,
+            'withdrawAbleBalance'=>$withdrawAbleBalance,
         ];
         return $response;
     }

@@ -3108,9 +3108,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       content: '',
       stats: {
+        totalusers: 0,
+        totalForThisAgent: 0,
         balance: 0,
         nidSearchedTotal: 0,
-        nidSearchedToday: 0
+        nidSearchedToday: 0,
+        totalSearchesByChild: 0,
+        todaySearchesByChild: 0,
+        withdrawAbleBalance: 0
       }
     };
   },
@@ -5660,7 +5665,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _c("div", {
     staticClass: "row gutters-20"
-  }, [_c("div", {
+  }, [_vm.$localStorage.getItem("role") == "admin" ? _c("div", {
     staticClass: "col-lg-3 col-sm-6 col-12"
   }, [_c("div", {
     staticClass: "card dashboard-card-seven"
@@ -5668,23 +5673,47 @@ var render = function render() {
     staticClass: "social-media bg-fb hover-fb"
   }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "social-like"
+  }, [_vm._v(_vm._s(_vm.stats.totalusers))])])])]) : _vm._e(), _vm._v(" "), _vm.$localStorage.getItem("role") == "agent" ? _c("div", {
+    staticClass: "col-lg-3 col-sm-6 col-12"
+  }, [_c("div", {
+    staticClass: "card dashboard-card-seven"
+  }, [_c("div", {
+    staticClass: "social-media bg-fb hover-fb"
+  }, [_vm._m(1), _vm._v(" "), _c("div", {
+    staticClass: "social-like"
+  }, [_vm._v(_vm._s(_vm.stats.totalForThisAgent))])])])]) : _vm._e(), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-3 col-sm-6 col-12"
+  }, [_c("div", {
+    staticClass: "card dashboard-card-seven"
+  }, [_c("div", {
+    staticClass: "social-media bg-fb hover-fb"
+  }, [_vm._m(2), _vm._v(" "), _c("div", {
+    staticClass: "social-like"
   }, [_vm._v(_vm._s(_vm.stats.balance))])])])]), _vm._v(" "), _c("div", {
     staticClass: "col-lg-3 col-sm-6 col-12"
   }, [_c("div", {
     staticClass: "card dashboard-card-seven"
   }, [_c("div", {
     staticClass: "social-media bg-twitter hover-twitter"
-  }, [_vm._m(1), _vm._v(" "), _c("div", {
+  }, [_vm._m(3), _vm._v(" "), _c("div", {
     staticClass: "social-like"
   }, [_vm._v(_vm._s(_vm.stats.nidSearchedTotal))])])])]), _vm._v(" "), _c("div", {
     staticClass: "col-lg-3 col-sm-6 col-12"
   }, [_c("div", {
     staticClass: "card dashboard-card-seven"
   }, [_c("div", {
-    staticClass: "social-media bg-gplus hover-gplus"
-  }, [_vm._m(2), _vm._v(" "), _c("div", {
+    staticClass: "social-media bg-twitter hover-twitter"
+  }, [_vm._m(4), _vm._v(" "), _c("div", {
     staticClass: "social-like"
-  }, [_vm._v(_vm._s(_vm.stats.nidSearchedToday))])])])]), _vm._v(" "), _vm._m(3)])], 1);
+  }, [_vm._v(_vm._s(_vm.stats.nidSearchedToday))])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-3 col-sm-6 col-12"
+  }, [_c("div", {
+    staticClass: "card dashboard-card-seven"
+  }, [_c("div", {
+    staticClass: "social-media bg-twitter hover-twitter"
+  }, [_vm._m(5), _vm._v(" "), _c("div", {
+    staticClass: "social-like"
+  }, [_vm._v(_vm._s(_vm.stats.withdrawAbleBalance))])])])])])], 1);
 };
 
 var staticRenderFns = [function () {
@@ -5701,7 +5730,37 @@ var staticRenderFns = [function () {
     staticClass: "media-body space-sm"
   }, [_c("h6", {
     staticClass: "item-title"
-  }, [_vm._v("Balance")])])]);
+  }, [_vm._v("Total Users")])])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "media media-none--lg"
+  }, [_c("div", {
+    staticClass: "social-icon"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-user"
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "media-body space-sm"
+  }, [_c("h6", {
+    staticClass: "item-title"
+  }, [_vm._v("Total Users")])])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "media media-none--lg"
+  }, [_c("div", {
+    staticClass: "social-icon"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-user"
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "media-body space-sm"
+  }, [_c("h6", {
+    staticClass: "item-title"
+  }, [_vm._v("Nid Balance")])])]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
@@ -5726,7 +5785,7 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "social-icon"
   }, [_c("i", {
-    staticClass: "fa-solid fa-user-pen"
+    staticClass: "fa-regular fa-users"
   })]), _vm._v(" "), _c("div", {
     staticClass: "media-body space-sm"
   }, [_c("h6", {
@@ -5737,24 +5796,16 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "col-lg-3 col-sm-6 col-12"
-  }, [_c("div", {
-    staticClass: "card dashboard-card-seven"
-  }, [_c("div", {
-    staticClass: "social-media bg-linkedin hover-linked"
-  }, [_c("div", {
     staticClass: "media media-none--lg"
   }, [_c("div", {
     staticClass: "social-icon"
   }, [_c("i", {
-    staticClass: "fa-duotone fa-book-open-cover"
+    staticClass: "fa-regular fa-users"
   })]), _vm._v(" "), _c("div", {
     staticClass: "media-body space-sm"
   }, [_c("h6", {
     staticClass: "item-title"
-  }, [_vm._v("Total ")])])]), _vm._v(" "), _c("div", {
-    staticClass: "social-like"
-  })])])]);
+  }, [_vm._v("Withdrawable Balance")])])]);
 }];
 render._withStripped = true;
 

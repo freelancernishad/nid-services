@@ -7,7 +7,42 @@
 
 
 
-        <div class="row gutters-20">
+                <div class="row gutters-20">
+
+
+                    <div class="col-lg-3 col-sm-6 col-12"  v-if="$localStorage.getItem('role')=='admin'">
+                        <div class="card dashboard-card-seven">
+                            <div class="social-media bg-fb hover-fb">
+                                <div class="media media-none--lg">
+                                    <div class="social-icon">
+                                        <i class="fa-solid fa-user"></i>
+                                    </div>
+                                    <div class="media-body space-sm">
+                                        <h6 class="item-title">Total Users</h6>
+                                    </div>
+                                </div>
+                                <div class="social-like">{{ stats.totalusers }}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6 col-12"  v-if="$localStorage.getItem('role')=='agent'">
+                        <div class="card dashboard-card-seven">
+                            <div class="social-media bg-fb hover-fb">
+                                <div class="media media-none--lg">
+                                    <div class="social-icon">
+                                        <i class="fa-solid fa-user"></i>
+                                    </div>
+                                    <div class="media-body space-sm">
+                                        <h6 class="item-title">Total Users</h6>
+                                    </div>
+                                </div>
+                                <div class="social-like">{{ stats.totalForThisAgent }}</div>
+                            </div>
+                        </div>
+                    </div>
+
+
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="card dashboard-card-seven">
                             <div class="social-media bg-fb hover-fb">
@@ -16,13 +51,15 @@
                                         <i class="fa-solid fa-user"></i>
                                     </div>
                                     <div class="media-body space-sm">
-                                        <h6 class="item-title">Balance</h6>
+                                        <h6 class="item-title">Nid Balance</h6>
                                     </div>
                                 </div>
                                 <div class="social-like">{{ stats.balance }}</div>
                             </div>
                         </div>
                     </div>
+
+
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="card dashboard-card-seven">
                             <div class="social-media bg-twitter hover-twitter">
@@ -38,12 +75,15 @@
                             </div>
                         </div>
                     </div>
+
+
+
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="card dashboard-card-seven">
-                            <div class="social-media bg-gplus hover-gplus">
+                            <div class="social-media bg-twitter hover-twitter">
                                 <div class="media media-none--lg">
                                     <div class="social-icon">
-                                        <i class="fa-solid fa-user-pen"></i>
+                                        <i class="fa-regular fa-users"></i>
                                     </div>
                                     <div class="media-body space-sm">
                                         <h6 class="item-title">Today Download</h6>
@@ -53,21 +93,29 @@
                             </div>
                         </div>
                     </div>
+
+
+
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="card dashboard-card-seven">
-                            <div class="social-media bg-linkedin hover-linked">
+                            <div class="social-media bg-twitter hover-twitter">
                                 <div class="media media-none--lg">
                                     <div class="social-icon">
-                                        <i class="fa-duotone fa-book-open-cover"></i>
+                                        <i class="fa-regular fa-users"></i>
                                     </div>
                                     <div class="media-body space-sm">
-                                        <h6 class="item-title">Total </h6>
+                                        <h6 class="item-title">Withdrawable Balance</h6>
                                     </div>
                                 </div>
-                                <div class="social-like"></div>
+                                <div class="social-like">{{ stats.withdrawAbleBalance }}</div>
                             </div>
                         </div>
                     </div>
+
+
+
+
+
                 </div>
 
 
@@ -117,9 +165,14 @@ computed:{
         return {
             content:'',
             stats:{
+                totalusers:0,
+                totalForThisAgent:0,
                 balance:0,
                 nidSearchedTotal:0,
                 nidSearchedToday:0,
+                totalSearchesByChild:0,
+                todaySearchesByChild:0,
+                withdrawAbleBalance:0,
             },
         };
     },
