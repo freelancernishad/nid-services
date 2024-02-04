@@ -55,7 +55,7 @@ function PdfMaker($pageSize='A4',$html,$Filename,$Watermark=true)
     $mpdf->showWatermarkImage = $Watermark;
     // $mpdf->WriteHTML('<watermarkimage src="'.base64('National_emblem_of_Bangladesh.png').'" alpha="0.2" size="80,80" />');
     // $mpdf->SetWatermarkImage(base64($schoolDetails->logo),0.15);
-    $mpdf->SetWatermarkImage(base64('National_emblem_of_Bangladesh.png'),0.2,array(60,60),array(72,85));
+    $mpdf->SetWatermarkImage(base64('National_emblem_of_Bangladesh.png'),0.2,array(60,60),array(72,90));
     $mpdf->WriteHTML($html);
     $mpdf->Output($Filename, 'I');
 }

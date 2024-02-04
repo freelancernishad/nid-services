@@ -219,7 +219,7 @@ export default {
                                     'old_nid' :nidD.oldNationalIdNumber,
                                     'blood_group' :'-',
                                     'present_address' :nidD.permanentAddressBN,
-                                    'userid' :1,
+                                    'userid' :localStorage.getItem('userid'),
                                     'photo' :nidD.photoUrl,
                                 }
 

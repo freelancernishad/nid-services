@@ -3106,11 +3106,43 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
-      content: ''
+      content: '',
+      stats: {
+        balance: 0,
+        nidSearchedTotal: 0,
+        nidSearchedToday: 0
+      }
     };
   },
-  mounted: function mounted() {},
-  methods: {}
+  methods: {
+    loadStats: function loadStats() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        var res;
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return _this.callApi('get', "/api/get/all/stats?role=".concat(localStorage.getItem('role'), "&userid=").concat(localStorage.getItem('userid')), []);
+
+              case 2:
+                res = _context2.sent;
+                _this.stats = res.data;
+
+              case 4:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    }
+  },
+  mounted: function mounted() {
+    this.loadStats();
+  }
 });
 
 /***/ }),
@@ -3356,7 +3388,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   'old_nid': nidD.oldNationalIdNumber,
                   'blood_group': '-',
                   'present_address': nidD.permanentAddressBN,
-                  'userid': 1,
+                  'userid': localStorage.getItem('userid'),
                   'photo': nidD.photoUrl
                 };
                 _context2.next = 23;
@@ -5622,10 +5654,108 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div");
+  return _c("div", [_vm.preLooding ? _c("preloader") : _vm._e(), _vm._v(" "), _c("Breadcrumbs", {
+    attrs: {
+      brename: "ড্যাশবোর্ড"
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "row gutters-20"
+  }, [_c("div", {
+    staticClass: "col-lg-3 col-sm-6 col-12"
+  }, [_c("div", {
+    staticClass: "card dashboard-card-seven"
+  }, [_c("div", {
+    staticClass: "social-media bg-fb hover-fb"
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "social-like"
+  }, [_vm._v(_vm._s(_vm.stats.balance))])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-3 col-sm-6 col-12"
+  }, [_c("div", {
+    staticClass: "card dashboard-card-seven"
+  }, [_c("div", {
+    staticClass: "social-media bg-twitter hover-twitter"
+  }, [_vm._m(1), _vm._v(" "), _c("div", {
+    staticClass: "social-like"
+  }, [_vm._v(_vm._s(_vm.stats.nidSearchedTotal))])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-lg-3 col-sm-6 col-12"
+  }, [_c("div", {
+    staticClass: "card dashboard-card-seven"
+  }, [_c("div", {
+    staticClass: "social-media bg-gplus hover-gplus"
+  }, [_vm._m(2), _vm._v(" "), _c("div", {
+    staticClass: "social-like"
+  }, [_vm._v(_vm._s(_vm.stats.nidSearchedToday))])])])]), _vm._v(" "), _vm._m(3)])], 1);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "media media-none--lg"
+  }, [_c("div", {
+    staticClass: "social-icon"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-user"
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "media-body space-sm"
+  }, [_c("h6", {
+    staticClass: "item-title"
+  }, [_vm._v("Balance")])])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "media media-none--lg"
+  }, [_c("div", {
+    staticClass: "social-icon"
+  }, [_c("i", {
+    staticClass: "fa-regular fa-users"
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "media-body space-sm"
+  }, [_c("h6", {
+    staticClass: "item-title"
+  }, [_vm._v("Total Download")])])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "media media-none--lg"
+  }, [_c("div", {
+    staticClass: "social-icon"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-user-pen"
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "media-body space-sm"
+  }, [_c("h6", {
+    staticClass: "item-title"
+  }, [_vm._v("Today Download")])])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "col-lg-3 col-sm-6 col-12"
+  }, [_c("div", {
+    staticClass: "card dashboard-card-seven"
+  }, [_c("div", {
+    staticClass: "social-media bg-linkedin hover-linked"
+  }, [_c("div", {
+    staticClass: "media media-none--lg"
+  }, [_c("div", {
+    staticClass: "social-icon"
+  }, [_c("i", {
+    staticClass: "fa-duotone fa-book-open-cover"
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "media-body space-sm"
+  }, [_c("h6", {
+    staticClass: "item-title"
+  }, [_vm._v("Total ")])])]), _vm._v(" "), _c("div", {
+    staticClass: "social-like"
+  })])])]);
+}];
 render._withStripped = true;
 
 

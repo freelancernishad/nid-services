@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\User;
 use App\Models\NidSearched;
 use Illuminate\Http\Request;
 
@@ -21,7 +23,7 @@ class NidSearchedController extends Controller
 
 
         .nidInfoHead {
-            font-size: 25px;
+            font-size: 30px;
             font-weight: bold;
             border: 2px solid black;
             padding: 18px 18px 22px 18px;
@@ -42,8 +44,8 @@ class NidSearchedController extends Controller
 
         }
         .nAddress {
-            font-size: 15px;
-            width: 300px;
+            font-size: 20px;
+            width: 100px;
         }
 
         </style>
@@ -218,4 +220,48 @@ class NidSearchedController extends Controller
         // Redirect to the index page with a success message
         return redirect()->route('nidsearched.index')->with('success', 'NidSearched record deleted successfully!');
     }
+
+    function allStats(Request $request){
+        $role = $request->role;
+        $userid = $request->userid;
+        $user = User::find($userid);
+
+        $nidSearched = NidSearched::where(['userid'=>$userid])->get();
+
+        $totalusers = User::count();
+        $totalForThisAgent = User::where(['parent_id'=>$userid])->count();
+        $nidbalance = $user->nidbalance;
+        $nidSearchedTotal = NidSearched::where(['userid'=>$userid])->count();
+        $nidSearchedToday = NidSearched::where(['userid'=>$userid,'search_date'=>date('Y-m-d')])->count();
+
+           // Get all child users (downlines)
+           $children = $user->children;
+
+           // Count total searches for all child users
+           $totalSearchesByChild = NidSearched::whereIn('userid', $children->pluck('id'))->count();
+
+           // Count today's searches for all child users
+           $todaySearchesByChild = NidSearched::whereIn('userid', $children->pluck('id'))
+               ->whereDate('search_date', Carbon::today())
+               ->count();
+
+
+
+
+
+
+
+        $response = [
+            'totalusers'=>$totalusers,
+            'totalForThisAgent'=>$totalForThisAgent,
+            'balance'=>$nidbalance,
+            'nidSearchedTotal'=>$nidSearchedTotal,
+            'nidSearchedToday'=>$nidSearchedToday,
+            'totalSearchesByChild'=>$totalSearchesByChild,
+            'todaySearchesByChild'=>$todaySearchesByChild,
+        ];
+        return $response;
+    }
+
+
 }
