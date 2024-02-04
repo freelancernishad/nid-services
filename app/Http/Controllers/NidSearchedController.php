@@ -176,12 +176,15 @@ class NidSearchedController extends Controller
         $userid = $request->userid;
         $user = User::findOrFail($userid);
         $parent_id = $user->parent_id;
-        $parentuser = User::findOrFail($parent_id);
-        $amount = $parentuser->referral_commissions;
-        // Update the commission balance
-        // $parentuser->referral_commissions += $amount;
-        $parentuser->balance += $amount;
-        $parentuser->save();
+        if($parent_id){
+            $parentuser = User::findOrFail($parent_id);
+            $amount = $parentuser->referral_commissions;
+            // Update the commission balance
+            // $parentuser->referral_commissions += $amount;
+            $parentuser->balance += $amount;
+            $parentuser->save();
+        }
+
 
 
 
