@@ -178,6 +178,7 @@ export default {
                             text: `জাতীয় পরিচয়পত্র যাচাই এর ব্যালান্স নেই`,
                             icon: 'error',
                         })
+                        this.preLooding = false;
                 return;
             }
 
