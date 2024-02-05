@@ -230,12 +230,12 @@
 
 
 
-                        <li  @click="submenu(0)"  class="nav-item"   v-if="$localStorage.getItem('user')=='admin' || $localStorage.getItem('role')=='agent'">
+                        <li  @click="submenu(0)"  class="nav-item"   v-if="$localStorage.getItem('role')=='admin' || $localStorage.getItem('role')=='agent'">
                             <router-link :to="{name:'Userslist',params:{status:'active'}}" class="nav-link"><i class="flaticon-dashboard"></i><span>Users</span></router-link>
                         </li>
 
 
-                        <li  @click="submenu(0)"  class="nav-item"   v-if="$localStorage.getItem('user')=='admin' || $localStorage.getItem('role')=='agent'">
+                        <li  @click="submenu(0)"  class="nav-item"   v-if="$localStorage.getItem('role')=='admin' || $localStorage.getItem('role')=='agent'">
                             <router-link :to="{name:'Usersform'}" class="nav-link"><i class="flaticon-dashboard"></i><span>Add User</span></router-link>
                         </li>
 
