@@ -12,6 +12,7 @@ class NidSearched extends Model
     protected $table = 'nid_searched';
 
     protected $fillable = [
+        'token',
         'nidno',
         'dob',
         'name_bn',

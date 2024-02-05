@@ -104,7 +104,7 @@ export default {
             }
 
 
-            var res = await this.callApiPaginate(`/api/payments/user/${localStorage.getItem('userid')}?page=${page}&role=${localStorage.getItem('role')}`,page);
+            var res = await this.callApiPaginate(`/api/payments/user/${localStorage.getItem('usertoken')}?page=${page}&role=${localStorage.getItem('role')}`,page);
 
             // console.log(res)
             this.lists = res

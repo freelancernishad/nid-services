@@ -46,12 +46,15 @@ Route::group([
 
 });
 
+
+Route::middleware('auth:api')->group(function () {
+    
 Route::get('user/{status}/{id}',[UserController::class,'userbanned']);
 Route::resources([
     'admin/user' => UserController::class,
     'admin/notification' => NotificationController::class,
 ]);
-
+Route::get('single/user/{token}', [UserController::class, 'showByToken']);
 Route::resource('nidsearched', NidSearchedController::class);
 Route::resource('payments', PaymentController::class);
 Route::get('payments/user/{userId}', [PaymentController::class, 'paymentsForUser']);
@@ -60,7 +63,7 @@ Route::post('user/up/{id}/{bal}',[UserController::class,'balanceUpdate']);
 Route::post('/register', [UserController::class, 'registerUser']);
 Route::get('/get/all/stats', [NidSearchedController::class, 'allStats']);
 
-
+});
 
 
 

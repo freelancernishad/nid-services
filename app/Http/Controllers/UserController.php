@@ -1,16 +1,18 @@
 <?php
 namespace App\Http\Controllers;
+use App\Models\Plan;
+use App\Models\Task;
 use App\Models\User;
+use App\Models\Level;
 use App\Models\Deposit;
 use App\Models\Gateway;
-use App\Models\Level;
-use App\Models\Plan;
-use App\Models\Withdrawal;
-use Illuminate\Http\Request;
-use App\Models\Task;
-use Illuminate\Support\Facades\Hash;
 use App\Models\Transition;
+use App\Models\Withdrawal;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
 class UserController extends Controller
 {
 
@@ -24,6 +26,8 @@ class UserController extends Controller
             'password' => 'required|min:6',
         ]);
 
+        $random = Str::random(40);
+        $validatedData['token'] = time().$random;
         $validatedData['password'] = hash::make($request->password);
 
         $user = User::create($validatedData);
@@ -38,7 +42,7 @@ class UserController extends Controller
 
     function balanceUpdate($id,$bal) {
 
-        $user = User::find($id);
+        $user = User::where(['token'=>$id])->first();
         $user->update(['nidbalance'=>$bal]);
         return $user;
     }
@@ -164,7 +168,14 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+
        return $user;
+
+    }
+    public function showByToken(Request $request,$token)
+    {
+
+       return User::where(['token'=>$token])->first();
 
     }
     /**

@@ -5,13 +5,17 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\NidSearched;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class NidSearchedController extends Controller
 {
     function Download($id) {
 
-         $nidinformations = NidSearched::find($id);
+         $nidinformations = NidSearched::where(['token'=>$id])->first();
+         if(!$nidinformations){
+            return "<h1 style='color:red;text-align:center'>Data Not Found</h1>";
+         }
 
 
         $html = "
@@ -163,6 +167,8 @@ class NidSearchedController extends Controller
         $photoUrl= nidImageSave($photoUrl);
 
         $validatedData['photo'] = $photoUrl;
+        $random = Str::random(40);
+        $validatedData['token'] = time().$random;
         $validatedData['search_date'] = date('Y-m-d');
         // Create a new NidSearched instance
 
@@ -247,8 +253,12 @@ class NidSearchedController extends Controller
 
     function allStats(Request $request){
         $role = $request->role;
-        $userid = $request->userid;
-        $user = User::find($userid);
+
+        $token = $request->userid;
+
+
+        $user = User::where(['token'=>$token])->first();
+        $userid = $user->id;
 
         $nidSearched = NidSearched::where(['userid'=>$userid])->get();
 

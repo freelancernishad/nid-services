@@ -31,7 +31,7 @@ Route::post('login', [LoginController::class, 'login']);
 Route::post('logout', [LoginController::class, 'logout']);
 
 
-Route::get('download/nid/{id}', [NidSearchedController::class, 'Download']);
+
 
 // Route::group(['middleware' => ['is_admin']], function() {
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -43,6 +43,7 @@ Route::get('download/nid/{id}', [NidSearchedController::class, 'Download']);
 
 
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
+    Route::get('download/nid/{id}', [NidSearchedController::class, 'Download']);
 
     Route::get('/{vue_capture?}', function () {
         return view('layout');

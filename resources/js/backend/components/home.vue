@@ -178,7 +178,7 @@ computed:{
     },
     methods: {
         async loadStats(){
-            var res = await this.callApi('get',`/api/get/all/stats?role=${localStorage.getItem('role')}&userid=${localStorage.getItem('userid')}`,[]);
+            var res = await this.callApi('get',`/api/get/all/stats?role=${localStorage.getItem('role')}&userid=${localStorage.getItem('usertoken')}`,[]);
             this.stats = res.data;
         }
     },

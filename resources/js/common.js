@@ -15,11 +15,14 @@ export default {
     },
     methods: {
         async callApi(method, url, dataObj ){
+
+            const headers = { Authorization: `Bearer ${localStorage.getItem('token')}` };
             try {
               return await axios({
                     method: method,
                     url: url,
-                    data: dataObj
+                    data: dataObj,
+                    headers:headers
                 });
             } catch (e) {
                 return e.response

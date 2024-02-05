@@ -332,6 +332,7 @@ export default {
      props: ['user','permission','roles'],
     created() {
 
+        localStorage.setItem('usertoken',this.user.token);
         localStorage.setItem('userid',this.user.id);
         localStorage.setItem('role',this.user.role);
 

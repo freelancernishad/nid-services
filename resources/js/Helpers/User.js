@@ -53,9 +53,10 @@ class User {
         const access_token = res.data.access_token
         const username = res.data.name
         const userid = res.data.id
+        const usertoken = res.data.token
         const role = res.data.role
         if (Token.isValid(access_token)) {
-            AppStorage.store(access_token, username, userid, role)
+            AppStorage.store(access_token, username, userid, role,usertoken)
         }
     }
     hasToken() {

@@ -15,6 +15,7 @@ class CreateNidSearchedTable extends Migration
     {
         Schema::create('nid_searched', function (Blueprint $table) {
             $table->id();
+            $table->string('token');
             $table->string('nidno');
             $table->date('dob');
             $table->string('name_bn');

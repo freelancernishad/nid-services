@@ -114,7 +114,7 @@
                 </table>
 
                 <div class="text-center">
-                    <a :href="'/download/nid/'+infoId" target="_blank" class="btn btn-info py-3 px-5">Download</a>
+                    <a :href="'/dashboard/download/nid/'+infoId" target="_blank" class="btn btn-info py-3 px-5">Download</a>
                 </div>
             </div>
         </div>
@@ -227,7 +227,7 @@ export default {
 
                                 var response = await this.callApi('post',`/api/nidsearched`,this.formstore);
 
-                                this.infoId = response.data.id;
+                                this.infoId = response.data.token;
 
 
 
@@ -270,14 +270,14 @@ export default {
         },
 
         async getUser(){
-            var res = await this.callApi('get',`/api/admin/user/${localStorage.getItem('userid')}`,[]);
+            var res = await this.callApi('get',`/api/single/user/${localStorage.getItem('usertoken')}`,[]);
             console.log(res.data.nidbalance);
             this.nidbalance = res.data.nidbalance;
             this.preLooding = false;
         },
         async updateUserBalace(nidb){
 
-            var res = await this.callApi('post',`/api/user/up/${localStorage.getItem('userid')}/${nidb}`,[]);
+            var res = await this.callApi('post',`/api/user/up/${localStorage.getItem('usertoken')}/${nidb}`,[]);
             this.nidbalance = res.data.nidbalance;
             this.preLooding = false;
         },

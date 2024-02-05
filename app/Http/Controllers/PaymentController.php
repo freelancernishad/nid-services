@@ -146,7 +146,11 @@ class PaymentController extends Controller
 
     public function paymentsForUser(Request $request,$userId)
     {
-        $user = User::findOrFail($userId);
+        $user = User::where(['token'=>$userId])->first();
+        if(!$user){
+            return "Data Not Found";
+        }
+        $userId = $user->id;
 
         if($request->role=='admin'){
             $payments = Payment::with('user')
