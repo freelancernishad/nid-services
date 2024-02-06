@@ -18,10 +18,76 @@
                                         <i class="fa-solid fa-user"></i>
                                     </div>
                                     <div class="media-body space-sm">
+                                        <h6 class="item-title">Total Member</h6>
+                                    </div>
+                                </div>
+                                <div class="social-like">{{ stats.totalmember }}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6 col-12"  v-if="$localStorage.getItem('role')=='admin'">
+                        <div class="card dashboard-card-seven">
+                            <div class="social-media bg-fb hover-fb">
+                                <div class="media media-none--lg">
+                                    <div class="social-icon">
+                                        <i class="fa-solid fa-user"></i>
+                                    </div>
+                                    <div class="media-body space-sm">
+                                        <h6 class="item-title">Total Admin</h6>
+                                    </div>
+                                </div>
+                                <div class="social-like">{{ stats.totaladmin }}</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-3 col-sm-6 col-12"  v-if="$localStorage.getItem('role')=='admin'">
+                        <div class="card dashboard-card-seven">
+                            <div class="social-media bg-fb hover-fb">
+                                <div class="media media-none--lg">
+                                    <div class="social-icon">
+                                        <i class="fa-solid fa-user"></i>
+                                    </div>
+                                    <div class="media-body space-sm">
+                                        <h6 class="item-title">Total Agent</h6>
+                                    </div>
+                                </div>
+                                <div class="social-like">{{ stats.totalagent }}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6 col-12"  v-if="$localStorage.getItem('role')=='admin'">
+                        <div class="card dashboard-card-seven">
+                            <div class="social-media bg-fb hover-fb">
+                                <div class="media media-none--lg">
+                                    <div class="social-icon">
+                                        <i class="fa-solid fa-user"></i>
+                                    </div>
+                                    <div class="media-body space-sm">
                                         <h6 class="item-title">Total Users</h6>
                                     </div>
                                 </div>
                                 <div class="social-like">{{ stats.totalusers }}</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-3 col-sm-6 col-12"  v-if="$localStorage.getItem('role')=='admin'">
+                        <div class="card dashboard-card-seven">
+                            <div class="social-media bg-fb hover-fb">
+                                <div class="media media-none--lg">
+                                    <div class="social-icon">
+                                        <i class="fa-solid fa-user"></i>
+                                    </div>
+                                    <div class="media-body space-sm">
+                                        <h6 class="item-title">Nid Porichoy Balance</h6>
+                                    </div>
+                                </div>
+                                <div class="social-like">{{ stats.mainbalance }}</div>
                             </div>
                         </div>
                     </div>
@@ -43,7 +109,7 @@
                     </div>
 
 
-                    <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="col-lg-3 col-sm-6 col-12" v-if="$localStorage.getItem('role')!='agent'">
                         <div class="card dashboard-card-seven">
                             <div class="social-media bg-fb hover-fb">
                                 <div class="media media-none--lg">
@@ -165,6 +231,10 @@ computed:{
         return {
             content:'',
             stats:{
+                mainbalance:0,
+                totalmember:0,
+                totaladmin:0,
+                totalagent:0,
                 totalusers:0,
                 totalForThisAgent:0,
                 balance:0,
@@ -178,9 +248,19 @@ computed:{
     },
     methods: {
         async loadStats(){
+
+
+
             var res = await this.callApi('get',`/api/get/all/stats?role=${localStorage.getItem('role')}&userid=${localStorage.getItem('usertoken')}`,[]);
             this.stats = res.data;
+            var mainBalance = await this.callApi('post',`https://uniontax.xyz/api/main/balance`,[]);
+            var balance = mainBalance.data;
+            this.stats.mainbalance = balance.credits/2;
         }
+
+
+
+
     },
     mounted() {
 

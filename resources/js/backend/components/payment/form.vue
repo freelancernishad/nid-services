@@ -29,7 +29,7 @@
             <div class="col-md-12">
                 <div class="form-group ">
                     <label class="form-control-label font-weight-bold">Amount <span class="text-danger">*</span></label>
-                    <input class="form-control" type="text" v-model="form.amount" value="sa">
+                    <input class="form-control" type="text" v-model="form.amount" required>
                 </div>
             </div>
 
@@ -37,8 +37,8 @@
 
             <div class="col-md-12">
                 <div class="form-group ">
-                    <label class="form-control-label font-weight-bold">Method </label>
-                    <select class="form-control" v-model="form.method">
+                    <label class="form-control-label font-weight-bold">Method <span class="text-danger">*</span></label>
+                    <select class="form-control" v-model="form.method" required>
                         <option value="bKash">bKash</option>
                         <option value="Nagad">Nagad</option>
                         <option value="Rocket">Rocket</option>
@@ -50,7 +50,7 @@
             <div class="col-md-12">
                 <div class="form-group ">
                     <label class="form-control-label font-weight-bold">Wallet Number <span class="text-danger">*</span></label>
-                    <input class="form-control" type="text" v-model="form.payment_wallet" value="sa">
+                    <input class="form-control" type="tel"  maxlength="11"  minlength="11" v-model="form.payment_wallet"  required >
                 </div>
             </div>
 
@@ -58,7 +58,7 @@
             <div class="col-md-12">
                 <div class="form-group ">
                     <label class="form-control-label font-weight-bold">Transition Id<span class="text-danger">*</span></label>
-                    <input class="form-control" type="text" v-model="form.mer_trxid" value="sa">
+                    <input class="form-control" type="text" v-model="form.mer_trxid" required>
                 </div>
             </div>
 

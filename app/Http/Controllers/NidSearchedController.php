@@ -262,7 +262,10 @@ class NidSearchedController extends Controller
 
         $nidSearched = NidSearched::where(['userid'=>$userid])->get();
 
-        $totalusers = User::count();
+        $totalmember = User::count();
+        $totaladmin = User::where(['role'=>'admin'])->count();
+        $totalagent = User::where(['role'=>'agent'])->count();
+        $totalusers = User::where(['role'=>'user'])->count();
         $totalForThisAgent = User::where(['parent_id'=>$userid])->count();
         $nidbalance = $user->nidbalance;
 
@@ -300,12 +303,16 @@ class NidSearchedController extends Controller
 
 
         $response = [
+            'totalmember'=>$totalmember,
+            'totaladmin'=>$totaladmin,
+            'totalagent'=>$totalagent,
             'totalusers'=>$totalusers,
             'totalForThisAgent'=>$totalForThisAgent,
             'balance'=>$nidbalance,
             'nidSearchedTotal'=>$nidSearchedTotal,
             'nidSearchedToday'=>$nidSearchedToday,
             'withdrawAbleBalance'=>$withdrawAbleBalance,
+            'mainbalance'=>0,
         ];
         return $response;
     }

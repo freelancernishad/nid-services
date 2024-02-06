@@ -22,8 +22,10 @@
                                 <th v-if="$localStorage.getItem('role')=='admin'">User Id </th>
                                 <th v-if="$localStorage.getItem('role')=='admin'">Name </th>
                                 <th v-if="$localStorage.getItem('role')=='admin'">Email </th>
-                                <th>Trx Id</th>
+                                <th>Id</th>
                                 <th>Method</th>
+                                <th>Wallet Number</th>
+                                <th>TrxId</th>
                                 <th>Date</th>
                                 <th>Amount</th>
                                 <th>Status</th>
@@ -39,6 +41,8 @@
                                 <td v-if="$localStorage.getItem('role')=='admin'">{{ list.user.email }}</td>
                                 <td>{{ list.trxid }}</td>
                                 <td>{{ list.method }}</td>
+                                <td>{{ list.payment_wallet }}</td>
+                                <td>{{ list.mer_trxid }}</td>
                                 <td>{{ list.date }}</td>
                                 <td>{{ list.amount }}</td>
                                 <td>{{ list.status }}</td>
