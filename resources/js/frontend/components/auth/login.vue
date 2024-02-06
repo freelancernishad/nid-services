@@ -30,7 +30,7 @@
                                 </label>
                             </div>
 
-                            <a class="btn btn-link" href="/password/reset">পাসওয়ার্ড ভুলে গেছেন?</a>
+                            <!-- <a class="btn btn-link" href="/password/reset">পাসওয়ার্ড ভুলে গেছেন?</a> -->
 
 
                         </div>
@@ -76,7 +76,7 @@ export default {
             this.form = JSON.parse(localStorage.getItem("login"));
             this.rememberme = true;
         }
-  
+
     },
 
     data() {

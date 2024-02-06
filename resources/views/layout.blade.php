@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>AKKHOR | Home 1</title>
+    <title>বর্ণমালা</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -44,7 +44,7 @@
 
 
 
-<script src="{{ asset('js/backend.js?v=1.0.12') }}"></script>
+<script src="{{ asset('js/backend.js?v=1.0.13') }}"></script>
 
 
 
