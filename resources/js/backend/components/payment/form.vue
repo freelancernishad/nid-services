@@ -29,7 +29,7 @@
             <div class="col-md-12">
                 <div class="form-group ">
                     <label class="form-control-label font-weight-bold">Amount <span class="text-danger">*</span></label>
-                    <input class="form-control" type="text" v-model="form.amount" required>
+                    <input class="form-control" type="number" min="500" v-model="form.amount" required>
                 </div>
             </div>
 
@@ -50,7 +50,7 @@
             <div class="col-md-12">
                 <div class="form-group ">
                     <label class="form-control-label font-weight-bold">Wallet Number <span class="text-danger">*</span></label>
-                    <input class="form-control" type="tel"  maxlength="11"  minlength="11" v-model="form.payment_wallet"  required >
+                    <input class="form-control" type="tel"  maxlength="11" minlength="11" v-model="form.payment_wallet"  required >
                 </div>
             </div>
 
