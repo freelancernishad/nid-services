@@ -116,7 +116,7 @@ class UserController extends Controller
 
         $role = $request->role;
         if($role=='admin'){
-            return User::orderBy('id','desc')->get();
+            return User::with('parent')->orderBy('id','desc')->get();
         }else{
             return User::where([
                 'parent_id' => $request->userid

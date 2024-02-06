@@ -39,7 +39,7 @@
                     <select class="form-control" v-model="form.role">
                         <option value="">Select</option>
                         <option value="admin"  v-if="$localStorage.getItem('role')=='admin'">Admin</option>
-                        <option value="Agent" v-if="$localStorage.getItem('role')=='admin' || $localStorage.getItem('role')=='Agent'">Agent</option>
+                        <option value="agent" v-if="$localStorage.getItem('role')=='admin' || $localStorage.getItem('role')=='agent'">Agent</option>
                         <option value="user">User</option>
                     </select>
                 </div>

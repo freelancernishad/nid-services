@@ -33,9 +33,19 @@ export default {
     created() {
         this.fields =  [
                 { key: 'name', label: 'Name', sortable: true },
-                { key: 'status', label: 'Status', sortable: true },
+                // { key: 'status', label: 'Status', sortable: true },
+                { key: 'role', label: 'Type', sortable: true },
             ]
-            this.fields.push( { key: 'actions', label: 'Actions' });
+        if(localStorage.getItem('role')=='admin'){
+            this.fields.push( { key: 'parent.name', label: 'Agent Name', sortable: true });
+            this.fields.push( { key: 'parent.email', label: 'Agent Email', sortable: true });
+        }else{
+
+        }
+        this.fields.push( { key: 'actions', label: 'Actions' });
+
+
+
     },
     data() {
         return {
@@ -68,6 +78,7 @@ export default {
                 [
                 { key: 'username', label: 'Username', sortable: true },
                 { key: 'mobile', label: 'Phone', sortable: true },
+                { key: 'parent.name', label: 'Agent Name' },
                 { key: 'statuses', label: 'Status' },
                 { key: 'actions', label: 'Actions' },
             ]
