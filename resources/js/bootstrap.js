@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
-// Vue.prototype.$asseturl = '/public/'
-Vue.prototype.$asseturl = '/'
+Vue.prototype.$asseturl = '/public/'
+// Vue.prototype.$asseturl = '/'
 
 Vue.prototype.$localStorage = localStorage
 window.ASSETURL = Vue.prototype.$asseturl
