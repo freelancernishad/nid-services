@@ -43,7 +43,11 @@ Route::post('logout', [LoginController::class, 'logout']);
 
 
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
+
+    
     Route::get('download/nid/{id}', [NidSearchedController::class, 'Download']);
+
+
 
     Route::get('/{vue_capture?}', function () {
         return view('layout');

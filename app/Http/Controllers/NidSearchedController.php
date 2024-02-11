@@ -10,22 +10,16 @@ use Illuminate\Http\Request;
 
 class NidSearchedController extends Controller
 {
-    function Download($id) {
+    function Download(Request $request, $id) {
+
 
          $nidinformations = NidSearched::where(['token'=>$id])->first();
          if(!$nidinformations){
             return "<h1 style='color:red;text-align:center'>Data Not Found</h1>";
          }
 
-
         $html = "
-
-
-
         <style>
-
-
-
         .nidInfoHead {
             font-size: 30px;
             font-weight: bold;
@@ -38,22 +32,16 @@ class NidSearchedController extends Controller
             margin-bottom:20px;
             text-align: center;
         }
-
-
-
         table.nidInformation tr td {
             font-size: 20px;
             font-weight: bold;
             color: black;
-
         }
         .nAddress {
             font-size: 20px;
             width: 100px;
         }
-
         </style>
-
         <div class='nidInfoHead'> জাতীয় পরিচিতি বিবরন</div>
         <table width='100%' style='margin-bottom:50px'>
         <tr>
@@ -62,45 +50,32 @@ class NidSearchedController extends Controller
             <td></td>
         </tr>
     </table>
-
     <table width='80%' style='margin:0 auto' class='nidInformation'>
-
-
-
         <tr>
             <td width='25%'>নাম</td>
             <td width='5%'>: </td>
             <td width='70%'> $nidinformations->name_bn </td>
         </tr>
-
-
         <tr>
             <td style='font-size:15px'>Name</td>
             <td>: </td>
             <td style='font-size:15px'> $nidinformations->name_en </td>
         </tr>
-
-
-
         <tr>
             <td>পিতা</td>
             <td>: </td>
             <td> $nidinformations->father_name </td>
         </tr>
-
-
         <tr>
             <td>মাতা</td>
             <td>: </td>
             <td> $nidinformations->mother_name </td>
         </tr>
-
         <tr>
             <td style='font-size:15px'>Date of Birth</td>
             <td>: </td>
             <td style='font-size:15px'> $nidinformations->dob </td>
         </tr>
-
         <tr>
             <td style='font-size:15px'>NID No.</td>
             <td>: </td>
@@ -118,17 +93,163 @@ class NidSearchedController extends Controller
             <td>: </td>
             <td> <div class='nAddress'>  $nidinformations->present_address </div></td>
         </tr>
-
-
-
     </table>
+        ";
+
+
+        $fullhtml = "
+        <style>
+
+        .border{
+            border-collapse: collapse;
+        }
+        .border, .border th, .border td {
+            border: 1px solid black;
+          }
+          .border2{
+            border-collapse: collapse;
+            }
+         .border2 th, .border2 td {
+            border: 1px solid black;
+          }
+
+        </style>
+
+        <p>Citizens</p>
+
+        <table width='100%'>
+            <tr>
+                <td width='80%'>
+                    <table width='100%' class='border'  >
+                        <tr><td width='20%'>National ID </td> <td width='80%' colspan='4'>   </td></tr>
+                        <tr><td>Pin </td> <td colspan='4'>   </td></tr>
+                        <tr><td>Status </td> <td colspan='4'>   </td></tr>
+                        <tr><td>Name(Bangla)  </td> <td colspan='4'>   </td></tr>
+                        <tr><td>Name(English)  </td> <td colspan='4'>   </td></tr>
+                        <tr><td>Date of Birth </td> <td colspan='4'>   </td></tr>
+                        <tr><td>Father Name </td> <td colspan='4'>   </td></tr>
+                        <tr><td>Mother Name </td> <td colspan='4'>   </td></tr>
+                        <tr><td>Spouse Name </td> <td colspan='4'>   </td></tr>
+                        <tr><td>Gender </td> <td colspan='4'>   </td></tr>
+                        <tr><td>Occupation </td> <td colspan='4'>   </td></tr>
+                        <tr><td>Disability </td> <td colspan='4'>   </td></tr>
+                        <tr><td>Disability Other </td> <td colspan='4'>   </td></tr>
+
+
+                        <tr><td style='vertical-align: top;' rowspan='5'>Present Address </td>
+                            <td>Division</td>
+                            <td></td>
+                            <td>District</td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>RMO</td>
+                            <td></td>
+                            <td>City Corporation Or Municipality </td>
+                            <td></td>
+                        </tr>
+
+
+                        <tr>
+                            <td>Union/Ward  </td>
+                            <td></td>
+                            <td>Mouza/Moholla </td>
+                            <td></td>
+                        </tr>
+
+
+
+                        <tr>
+                            <td>Post Office  </td>
+                            <td></td>
+                            <td>Postal Code </td>
+                            <td></td>
+                        </tr>
+
+
+                        <tr>
+                            <td>Region  </td>
+                            <td></td>
+                            <td> </td>
+                            <td></td>
+                        </tr>
+
+
+                        <tr><td style='vertical-align: top;' rowspan='5'>Permanent Address </td>
+                            <td>Division</td>
+                            <td></td>
+                            <td>District</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>RMO</td>
+                            <td></td>
+                            <td>City Corporation Or Municipality </td>
+                            <td></td>
+                        </tr>
+
+
+                        <tr>
+                            <td>Union/Ward  </td>
+                            <td></td>
+                            <td>Mouza/Moholla </td>
+                            <td></td>
+                        </tr>
+
+
+
+                        <tr>
+                            <td>Post Office  </td>
+                            <td></td>
+                            <td>Postal Code </td>
+                            <td></td>
+                        </tr>
+
+
+                        <tr>
+                            <td>Region  </td>
+                            <td></td>
+                            <td> </td>
+                            <td></td>
+                        </tr>
+
+
+
+                    </table>
+                </td>
+                <td width='20%' style='vertical-align: top;'>
+
+                <div class='nidInfoImage'> <img width='130px' src='".base64('storage/'.$nidinformations->photo)."' alt=''></div>
+                <br/>
+                <h4>Voter Documents</h4>
+                <p>No Documents Available</p>
+                </td>
+            </tr>
+
+        </table>
+
 
 
 
         ";
+
+
+
+
+
         $Filename = 'nid.pdf';
 
-        return PdfMaker('A4',$html,$Filename,true);
+        $type = $request->type;
+        if($type=='full'){
+
+            return PdfMaker('A4',$fullhtml,$Filename,false);
+        }else{
+
+            return PdfMaker('A4',$html,$Filename,true);
+        }
+
+
     }
     // Display a listing of the resource.
     public function index()
