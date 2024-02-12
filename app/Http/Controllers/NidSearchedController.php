@@ -105,12 +105,17 @@ class NidSearchedController extends Controller
         }
         .border, .border th, .border td {
             border: 1px solid black;
+            color:#585858;
+            padding:10px 5px;
           }
           .border2{
             border-collapse: collapse;
             }
          .border2 th, .border2 td {
             border: 1px solid black;
+          }
+          .banglaFont{
+            font-size:20px;
           }
 
         </style>
@@ -121,95 +126,111 @@ class NidSearchedController extends Controller
             <tr>
                 <td width='80%'>
                     <table width='100%' class='border'  >
-                        <tr><td width='20%'>National ID </td> <td width='80%' colspan='4'>   </td></tr>
-                        <tr><td>Pin </td> <td colspan='4'>   </td></tr>
-                        <tr><td>Status </td> <td colspan='4'>   </td></tr>
-                        <tr><td>Name(Bangla)  </td> <td colspan='4'>   </td></tr>
-                        <tr><td>Name(English)  </td> <td colspan='4'>   </td></tr>
-                        <tr><td>Date of Birth </td> <td colspan='4'>   </td></tr>
-                        <tr><td>Father Name </td> <td colspan='4'>   </td></tr>
-                        <tr><td>Mother Name </td> <td colspan='4'>   </td></tr>
-                        <tr><td>Spouse Name </td> <td colspan='4'>   </td></tr>
-                        <tr><td>Gender </td> <td colspan='4'>   </td></tr>
-                        <tr><td>Occupation </td> <td colspan='4'>   </td></tr>
-                        <tr><td>Disability </td> <td colspan='4'>   </td></tr>
-                        <tr><td>Disability Other </td> <td colspan='4'>   </td></tr>
+                        <tr><td width='20%'>National ID </td> <td width='80%' colspan='4'> $nidinformations->nidno  </td></tr>
+                        <tr><td>Pin </td> <td colspan='4'>  $nidinformations->oldNationalIdNumber </td></tr>
+                        <tr><td>Status </td> <td colspan='4'> printed  </td></tr>
+                        <tr><td>Name(Bangla)  </td> <td colspan='4' class='banglaFont'> $nidinformations->name_bn  </td></tr>
+                        <tr><td>Name(English)  </td> <td colspan='4'> $nidinformations->name_en  </td></tr>
+                        <tr><td>Date of Birth </td> <td colspan='4'> $nidinformations->dob  </td></tr>
+                        <tr><td>Father Name </td> <td colspan='4' class='banglaFont'> $nidinformations->father_name  </td></tr>
+                        <tr><td>Mother Name </td> <td colspan='4' class='banglaFont'> $nidinformations->mother_name  </td></tr>
+                        <tr><td>Spouse Name </td> <td colspan='4' class='banglaFont'> $nidinformations->spouseNameBN  </td></tr>
+                        <tr><td>Gender </td> <td colspan='4'> $nidinformations->gender  </td></tr>
+                        <tr><td>Occupation </td> <td colspan='4' class='banglaFont'> $nidinformations->profession  </td></tr>
+                        <tr><td>Disability </td> <td colspan='4'>  $nidinformations->disability </td></tr>
+                        <tr><td>Disability Other </td> <td colspan='4'>  $nidinformations->Disability_other </td></tr>
 
 
-                        <tr><td style='vertical-align: top;' rowspan='5'>Present Address </td>
+                        <tr><td style='vertical-align: top;' rowspan='6'>Present Address </td>
                             <td>Division</td>
-                            <td></td>
+                            <td class='banglaFont'>$nidinformations->presentDivision</td>
                             <td>District</td>
-                            <td></td>
+                            <td class='banglaFont'>$nidinformations->presentDistrict</td>
                         </tr>
 
                         <tr>
                             <td>RMO</td>
-                            <td></td>
+                            <td class='banglaFont'>$nidinformations->present_rmo</td>
                             <td>City Corporation Or Municipality </td>
-                            <td></td>
+                            <td class='banglaFont'>$nidinformations->present_city</td>
                         </tr>
 
 
                         <tr>
+                            <td>Upozila  </td>
+                            <td class='banglaFont'>$nidinformations->presentThana</td>
                             <td>Union/Ward  </td>
-                            <td></td>
+                            <td class='banglaFont'>$nidinformations->present_mouza</td>
+                        </tr>
+
+                        <tr>
+
                             <td>Mouza/Moholla </td>
-                            <td></td>
+                            <td class='banglaFont'>$nidinformations->present_mouza</td>
+                            <td>Additional Mouza/Moholla  </td>
+                            <td class='banglaFont'>$nidinformations->present_additional_mouza</td>
                         </tr>
 
 
 
                         <tr>
                             <td>Post Office  </td>
-                            <td></td>
+                            <td class='banglaFont'>$nidinformations->presentPost</td>
                             <td>Postal Code </td>
-                            <td></td>
+                            <td class='banglaFont'>$nidinformations->presentPostCode</td>
                         </tr>
 
 
                         <tr>
                             <td>Region  </td>
-                            <td></td>
+                            <td class='banglaFont'>$nidinformations->present_region</td>
                             <td> </td>
                             <td></td>
                         </tr>
 
 
-                        <tr><td style='vertical-align: top;' rowspan='5'>Permanent Address </td>
+                        <tr><td style='vertical-align: top;' rowspan='6'>Permanent Address </td>
                             <td>Division</td>
-                            <td></td>
+                            <td class='banglaFont'>$nidinformations->permanentDivision</td>
                             <td>District</td>
-                            <td></td>
+                            <td class='banglaFont'>$nidinformations->permanentDistrict</td>
                         </tr>
                         <tr>
                             <td>RMO</td>
-                            <td></td>
+                            <td class='banglaFont'>$nidinformations->permanent_rmo</td>
                             <td>City Corporation Or Municipality </td>
-                            <td></td>
+                            <td class='banglaFont'>$nidinformations->permanent_city</td>
                         </tr>
 
 
                         <tr>
+                            <td>Upozila  </td>
+                            <td class='banglaFont'>$nidinformations->permanentThana</td>
                             <td>Union/Ward  </td>
-                            <td></td>
+                            <td class='banglaFont'>$nidinformations->permanentUnion</td>
+
+                        </tr>
+
+                        <tr>
                             <td>Mouza/Moholla </td>
-                            <td></td>
+                            <td class='banglaFont'>$nidinformations->permanent_mouza</td>
+                            <td>Additional Mouza/Moholla  </td>
+                            <td class='banglaFont'>$nidinformations->permanent_additional_mouza</td>
                         </tr>
 
 
 
                         <tr>
                             <td>Post Office  </td>
-                            <td></td>
+                            <td class='banglaFont'>$nidinformations->permanentPost</td>
                             <td>Postal Code </td>
-                            <td></td>
+                            <td class='banglaFont'>$nidinformations->permanentPostCode</td>
                         </tr>
 
 
                         <tr>
                             <td>Region  </td>
-                            <td></td>
+                            <td class='banglaFont'>$nidinformations->permanent_region</td>
                             <td> </td>
                             <td></td>
                         </tr>
@@ -228,8 +249,23 @@ class NidSearchedController extends Controller
             </tr>
 
         </table>
-
-
+        <pagebreak>
+        <table width='100%'>
+            <tr>
+                <td width='80%'>
+                    <table width='100%' class='border'  >
+                        <tr><td width='20%'>Blood Group  </td> <td width='80%' colspan='4'> $nidinformations->blood_group  </td></tr>
+                        <tr><td>Identification </td> <td colspan='4'> $nidinformations->identification  </td></tr>
+                        <tr><td>Phone </td> <td colspan='4'> $nidinformations->phone  </td></tr>
+                        <tr><td>Mobile  </td> <td colspan='4'> $nidinformations->mobile  </td></tr>
+                        <tr><td>Religion  </td> <td colspan='4'> $nidinformations->religion  </td></tr>
+                        <tr><td>No Finger  </td> <td colspan='4'> $nidinformations->no_finger  </td></tr>
+                        <tr><td>No Finger Print  </td> <td colspan='4'> $nidinformations->no_finger_print  </td></tr>
+                    </table>
+                </td>
+                <td></td>
+            </tr>
+        </table>
 
 
         ";
@@ -280,7 +316,54 @@ class NidSearchedController extends Controller
             'present_address' => 'required',
             'userid' => 'required|exists:users,id',
 
+
+            'oldNationalIdNumber' => 'required',
+
+            'gender' => 'required',
+            'profession' => 'required',
+            'presentDistrict' => 'required',
+            'presentThana' => 'required',
+            'presentUnion' => 'required',
+            'presentPost' => 'required',
+            'presentPostCode' => 'required',
+            'permanentDistrict' => 'required',
+            'permanentThana' => 'required',
+            'permanentUnion' => 'required',
+            'permanentPost' => 'required',
+            'permanentPostCode' => 'required',
+
+
         ]);
+
+
+
+
+
+        $validatedData['spouseNameBN'] = $request->spouseNameBN;
+        $validatedData['disability'] = '-';
+        $validatedData['Disability_other'] = '-';
+        $validatedData['presentDivision'] = '-';
+        $validatedData['present_rmo'] = '-';
+        $validatedData['present_city'] = '-';
+        $validatedData['present_mouza'] = '-';
+        $validatedData['present_additional_mouza'] = '-';
+        $validatedData['present_region'] = '-';
+        $validatedData['permanentDivision'] = '-';
+        $validatedData['permanent_rmo'] = '-';
+        $validatedData['permanent_city'] = '-';
+        $validatedData['permanent_mouza'] = '-';
+        $validatedData['permanent_additional_mouza'] = '-';
+        $validatedData['permanent_region'] = '-';
+
+        $validatedData['identification'] = '-';
+        $validatedData['phone'] = '-';
+        $validatedData['mobile'] = '-';
+        $validatedData['religion'] = '-';
+        $validatedData['no_finger'] = '-';
+        $validatedData['no_finger_print'] = '-';
+
+
+
 
 
         $photoUrl = $request->photo;
@@ -436,6 +519,25 @@ class NidSearchedController extends Controller
             'mainbalance'=>0,
         ];
         return $response;
+    }
+
+
+
+    function updateNid(Request $request,$id) {
+
+        $nidSearched = NidSearched::find($id);
+        $updateData = [
+            'blood_group' => $request->blood_group,
+            'identification' => $request->identification,
+            'phone' => $request->phone,
+            'mobile' => $request->mobile,
+            'religion' => $request->religion,
+            'no_finger' => $request->no_finger,
+            'no_finger_print' => $request->no_finger_print,
+        ];
+        $nidSearched->update($updateData);
+        return $nidSearched;
+
     }
 
 

@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-
+        <button @click="openModal">Open Modal</button>
 
 
         <div class="card" v-if="infoId">
@@ -116,13 +116,82 @@
                 <div class="text-center">
                     <a :href="'/dashboard/download/nid/'+infoId" target="_blank" class="btn btn-info py-3 px-5">Download</a>
 
-                    <a :href="'/dashboard/download/nid/'+infoId+'?type=full'" target="_blank" class="btn btn-info py-3 px-5">Full File Download</a>
+
+                    <button class="btn btn-info py-3 px-5" @click="openModal">Full File Download</button>
+<!--
+                    <a :href="'/dashboard/download/nid/'+infoId+'?type=full'" target="_blank" class="btn btn-info py-3 px-5">Full File Download</a> -->
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+    <!-- Modal -->
+    <div class="modal2" :class="{ 'open': showModal }">
+      <div class="modal2-content">
+        <span class="close" @click="closeModal">&times;</span>
+        <p>This is a modal!</p>
+
+
+
+        <div class="card">
+            <div class="card-body">
+                <div class="container">
+                    <form @submit.stop.prevent="updatefile" class="form">
+
+
+                        <div class="form-group">
+                            <label for="">Blood Group</label>
+                            <input type="text" class="form-control" v-model="formstore.blood_group">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="">Identification</label>
+                            <input type="text" class="form-control" v-model="formstore.identification">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="">Phone</label>
+                            <input type="text" class="form-control" v-model="formstore.phone">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="">Mobile</label>
+                            <input type="text" class="form-control" v-model="formstore.mobile">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Religion</label>
+                            <input type="text" class="form-control" v-model="formstore.religion">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">No Finger</label>
+                            <input type="text" class="form-control" v-model="formstore.no_finger">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">No Finger Print</label>
+                            <input type="text" class="form-control" v-model="formstore.no_finger_print">
+                        </div>
+
+                        <div class="text-center">
+                            <button class="btn-fill-lmd text-light gradient-dodger-blue btn-block">Download</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
 
 
 
+      </div>
+    </div>
 
 
     </div>
@@ -137,6 +206,7 @@ export default {
     },
     data() {
         return {
+            showModal: false,
             nidbalance:0,
             preLooding:false,
             form:{
@@ -155,10 +225,49 @@ export default {
                 'present_address' :'',
                 'userid' :'',
                 'search_date' :'',
+
+
+                'oldNationalIdNumber' :'',
+                'spouseNameBN' :'',
+                'gender' :'',
+                'profession' :'',
+                'disability' :'',
+                'Disability_other' :'',
+                'presentDivision' :'',
+                'presentDistrict' :'',
+                'present_rmo' :'',
+                'present_city' :'',
+                'presentThana' :'',
+                'presentUnion' :'',
+                'present_mouza' :'',
+                'present_additional_mouza' :'',
+                'presentPost' :'',
+                'presentPostCode' :'',
+                'present_region' :'',
+
+                'permanentDivision' :'',
+                'permanentDistrict' :'',
+                'permanent_rmo' :'',
+                'permanent_city' :'',
+                'permanentThana' :'',
+                'permanentUnion' :'',
+                'permanent_mouza' :'',
+                'permanent_additional_mouza' :'',
+                'permanentPost' :'',
+                'permanentPostCode' :'',
+                'permanent_region' :'',
+
+                'identification' :'',
+                'phone' :'',
+                'mobile' :'',
+                'religion' :'',
+                'no_finger' :'',
+                'no_finger_print' :'',
             },
             nidinformations:{},
             infoId:'',
             sToken:'',
+            id:'',
         }
     },
   watch: {
@@ -169,6 +278,29 @@ export default {
         }
     },
     methods: {
+
+        openModal() {
+      this.showModal = true;
+    },
+    closeModal() {
+      this.showModal = false;
+    },
+        async updatefile(){
+            this.preLooding = true
+            var res = await this.callApi('post',`/api/update/nid/data/${this.id}`,this.formstore);
+            if(res.status==200){
+                window.open(`/dashboard/download/nid/${this.infoId}?type=full`, '_blank');
+                // window.location.href = `/dashboard/download/nid/${this.infoId}?type=full`;
+            }else{
+                Swal.fire({
+                    title: 'দুঃখিত',
+                    text: `আবার চেষ্টা করুন`,
+                    icon: 'error',
+                })
+            }
+
+            this.preLooding = false
+        },
 
        async onSubmit(){
             this.preLooding = true
@@ -224,12 +356,54 @@ export default {
                                     'present_address' :nidD.permanentAddressBN,
                                     'userid' :localStorage.getItem('userid'),
                                     'photo' :nidD.photoUrl,
+
+
+                                    'oldNationalIdNumber' :nidD.oldNationalIdNumber,
+                                    'spouseNameBN' :nidD.spouseNameBN,
+                                    'gender' :nidD.gender,
+                                    'profession' :nidD.profession,
+                                    'disability' :'',
+                                    'Disability_other' :'',
+                                    'presentDivision' :'',
+                                    'presentDistrict' :nidD.presentDistrict,
+                                    'present_rmo' :'',
+                                    'present_city' :'',
+                                    'presentThana' :nidD.presentThana,
+                                    'presentUnion' :nidD.presentUnion,
+                                    'present_mouza' :'',
+                                    'present_additional_mouza' :'',
+                                    'presentPost' :nidD.presentPost,
+                                    'presentPostCode' :nidD.presentPostCode,
+                                    'present_region' :'',
+
+                                    'permanentDivision' :'',
+                                    'permanentDistrict' :nidD.permanentDistrict,
+                                    'permanent_rmo' :'',
+                                    'permanent_city' :'',
+                                    'permanentThana' :nidD.permanentThana,
+                                    'permanentUnion' :nidD.permanentUnion,
+                                    'permanent_mouza' :'',
+                                    'permanent_additional_mouza' :'',
+                                    'permanentPost' :nidD.permanentPost,
+                                    'permanentPostCode' :nidD.permanentPostCode,
+                                    'permanent_region' :'',
+
+                                    'identification' :'',
+                                    'phone' :'',
+                                    'mobile' :'',
+                                    'religion' :'',
+                                    'no_finger' :'',
+                                    'no_finger_print' :'',
+
+
+
                                 }
 
 
                                 var response = await this.callApi('post',`/api/nidsearched`,this.formstore);
 
                                 this.infoId = response.data.token;
+                                this.id = response.data.id;
 
 
 
@@ -296,6 +470,50 @@ export default {
 </script>
 
 <style scoped>
+
+.modal2 {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal2.open {
+  display: block; /* Hidden by default */
+
+}
+
+/* Modal content */
+.modal2-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Close button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
 .nidInfoHead {
     font-size: 25px;
     font-weight: 600;

@@ -3298,6 +3298,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   created: function created() {},
   data: function data() {
     return {
+      showModal: false,
       nidbalance: 0,
       preLooding: false,
       form: {
@@ -3315,11 +3316,46 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         'blood_group': '',
         'present_address': '',
         'userid': '',
-        'search_date': ''
+        'search_date': '',
+        'oldNationalIdNumber': '',
+        'spouseNameBN': '',
+        'gender': '',
+        'profession': '',
+        'disability': '',
+        'Disability_other': '',
+        'presentDivision': '',
+        'presentDistrict': '',
+        'present_rmo': '',
+        'present_city': '',
+        'presentThana': '',
+        'presentUnion': '',
+        'present_mouza': '',
+        'present_additional_mouza': '',
+        'presentPost': '',
+        'presentPostCode': '',
+        'present_region': '',
+        'permanentDivision': '',
+        'permanentDistrict': '',
+        'permanent_rmo': '',
+        'permanent_city': '',
+        'permanentThana': '',
+        'permanentUnion': '',
+        'permanent_mouza': '',
+        'permanent_additional_mouza': '',
+        'permanentPost': '',
+        'permanentPostCode': '',
+        'permanent_region': '',
+        'identification': '',
+        'phone': '',
+        'mobile': '',
+        'religion': '',
+        'no_finger': '',
+        'no_finger_print': ''
       },
       nidinformations: {},
       infoId: '',
-      sToken: ''
+      sToken: '',
+      id: ''
     };
   },
   watch: {
@@ -3329,19 +3365,61 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   methods: {
-    onSubmit: function onSubmit() {
+    openModal: function openModal() {
+      this.showModal = true;
+    },
+    closeModal: function closeModal() {
+      this.showModal = false;
+    },
+    updatefile: function updatefile() {
       var _this = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-        var nidData, res, nidD, response;
-        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var res;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context.prev = _context.next) {
               case 0:
                 _this.preLooding = true;
+                _context.next = 3;
+                return _this.callApi('post', "/api/update/nid/data/".concat(_this.id), _this.formstore);
 
-                if (!(_this.nidbalance < 1)) {
-                  _context2.next = 5;
+              case 3:
+                res = _context.sent;
+
+                if (res.status == 200) {
+                  window.open("/dashboard/download/nid/".concat(_this.infoId, "?type=full"), '_blank'); // window.location.href = `/dashboard/download/nid/${this.infoId}?type=full`;
+                } else {
+                  Swal.fire({
+                    title: 'দুঃখিত',
+                    text: "\u0986\u09AC\u09BE\u09B0 \u099A\u09C7\u09B7\u09CD\u099F\u09BE \u0995\u09B0\u09C1\u09A8",
+                    icon: 'error'
+                  });
+                }
+
+                _this.preLooding = false;
+
+              case 6:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    onSubmit: function onSubmit() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+        var nidData, res, nidD, response;
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _this2.preLooding = true;
+
+                if (!(_this2.nidbalance < 1)) {
+                  _context3.next = 5;
                   break;
                 }
 
@@ -3350,12 +3428,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   text: "\u099C\u09BE\u09A4\u09C0\u09DF \u09AA\u09B0\u09BF\u099A\u09DF\u09AA\u09A4\u09CD\u09B0 \u09AF\u09BE\u099A\u09BE\u0987 \u098F\u09B0 \u09AC\u09CD\u09AF\u09BE\u09B2\u09BE\u09A8\u09CD\u09B8 \u09A8\u09C7\u0987",
                   icon: 'error'
                 });
-                _this.preLooding = false;
-                return _context2.abrupt("return");
+                _this2.preLooding = false;
+                return _context3.abrupt("return");
 
               case 5:
-                if (!(_this.form.nidno == '' && _this.form.dob == '')) {
-                  _context2.next = 10;
+                if (!(_this2.form.nidno == '' && _this2.form.dob == '')) {
+                  _context3.next = 10;
                   break;
                 }
 
@@ -3364,39 +3442,39 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   text: "\u099C\u09BE\u09A4\u09C0\u09DF \u09AA\u09B0\u09BF\u099A\u09DF\u09AA\u09A4\u09CD\u09B0 \u09A8\u0982 \u098F\u09AC\u0982 \u099C\u09A8\u09CD\u09AE \u09A4\u09BE\u09B0\u09BF\u0996 \u09AA\u09C2\u09B0\u09A3 \u0995\u09B0\u09A4\u09C7 \u09B9\u09AC\u09C7",
                   icon: 'error'
                 });
-                _this.preLooding = false;
-                _context2.next = 34;
+                _this2.preLooding = false;
+                _context3.next = 35;
                 break;
 
               case 10:
-                if (!(_this.form.nidno.length == 10 || _this.form.nidno.length == 13 || _this.form.nidno.length == 17)) {
-                  _context2.next = 32;
+                if (!(_this2.form.nidno.length == 10 || _this2.form.nidno.length == 13 || _this2.form.nidno.length == 17)) {
+                  _context3.next = 33;
                   break;
                 }
 
                 nidData = {
-                  'nidNumber': _this.form.nidno,
-                  'dateOfBirth': _this.form.dob
+                  'nidNumber': _this2.form.nidno,
+                  'dateOfBirth': _this2.form.dob
                 };
-                _context2.next = 14;
-                return _this.callApi('post', "https://uniontax.xyz/api/citizen/information/nid?sToken=".concat(_this.sToken), nidData);
+                _context3.next = 14;
+                return _this2.callApi('post', "https://uniontax.xyz/api/citizen/information/nid?sToken=".concat(_this2.sToken), nidData);
 
               case 14:
-                res = _context2.sent;
+                res = _context3.sent;
 
                 if (!(res.data.status == 200 || res.data.status == 301)) {
-                  _context2.next = 28;
+                  _context3.next = 29;
                   break;
                 }
 
-                _this.nidbalance--; // this.$emit('check_nid_balace',this.form.unioun_name)
+                _this2.nidbalance--; // this.$emit('check_nid_balace',this.form.unioun_name)
 
-                _this.updateUserBalace(_this.nidbalance);
+                _this2.updateUserBalace(_this2.nidbalance);
 
                 nidD = res.data.informations;
-                _this.form.image = nidD.photoUrl;
-                _this.nidinformations = nidD;
-                _this.formstore = {
+                _this2.form.image = nidD.photoUrl;
+                _this2.nidinformations = nidD;
+                _this2.formstore = {
                   'nidno': nidD.nationalIdNumber,
                   'dob': nidD.dateOfBirth,
                   'name_bn': nidD.fullNameBN,
@@ -3407,18 +3485,53 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   'blood_group': '-',
                   'present_address': nidD.permanentAddressBN,
                   'userid': localStorage.getItem('userid'),
-                  'photo': nidD.photoUrl
+                  'photo': nidD.photoUrl,
+                  'oldNationalIdNumber': nidD.oldNationalIdNumber,
+                  'spouseNameBN': nidD.spouseNameBN,
+                  'gender': nidD.gender,
+                  'profession': nidD.profession,
+                  'disability': '',
+                  'Disability_other': '',
+                  'presentDivision': '',
+                  'presentDistrict': nidD.presentDistrict,
+                  'present_rmo': '',
+                  'present_city': '',
+                  'presentThana': nidD.presentThana,
+                  'presentUnion': nidD.presentUnion,
+                  'present_mouza': '',
+                  'present_additional_mouza': '',
+                  'presentPost': nidD.presentPost,
+                  'presentPostCode': nidD.presentPostCode,
+                  'present_region': '',
+                  'permanentDivision': '',
+                  'permanentDistrict': nidD.permanentDistrict,
+                  'permanent_rmo': '',
+                  'permanent_city': '',
+                  'permanentThana': nidD.permanentThana,
+                  'permanentUnion': nidD.permanentUnion,
+                  'permanent_mouza': '',
+                  'permanent_additional_mouza': '',
+                  'permanentPost': nidD.permanentPost,
+                  'permanentPostCode': nidD.permanentPostCode,
+                  'permanent_region': '',
+                  'identification': '',
+                  'phone': '',
+                  'mobile': '',
+                  'religion': '',
+                  'no_finger': '',
+                  'no_finger_print': ''
                 };
-                _context2.next = 24;
-                return _this.callApi('post', "/api/nidsearched", _this.formstore);
+                _context3.next = 24;
+                return _this2.callApi('post', "/api/nidsearched", _this2.formstore);
 
               case 24:
-                response = _context2.sent;
-                _this.infoId = response.data.token;
-                _context2.next = 29;
+                response = _context3.sent;
+                _this2.infoId = response.data.token;
+                _this2.id = response.data.id;
+                _context3.next = 30;
                 break;
 
-              case 28:
+              case 29:
                 Swal.fire({
                   title: 'দুঃখিত',
                   text: "\u0995\u09BF\u099B\u09C1 \u098F\u0995\u099F\u09BE \u09B8\u09AE\u09B8\u09CD\u09AF\u09BE \u09B9\u09DF\u09C7\u099B\u09C7 ",
@@ -3428,21 +3541,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   allowOutsideClick: false,
                   allowEscapeKey: false
                 }).then( /*#__PURE__*/function () {
-                  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(result) {
-                    return _regeneratorRuntime().wrap(function _callee$(_context) {
+                  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(result) {
+                    return _regeneratorRuntime().wrap(function _callee2$(_context2) {
                       while (1) {
-                        switch (_context.prev = _context.next) {
+                        switch (_context2.prev = _context2.next) {
                           case 0:
                             if (result.isConfirmed) {
-                              _this.getToken();
+                              _this2.getToken();
                             }
 
                           case 1:
                           case "end":
-                            return _context.stop();
+                            return _context2.stop();
                         }
                       }
-                    }, _callee);
+                    }, _callee2);
                   }));
 
                   return function (_x) {
@@ -3450,50 +3563,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   };
                 }());
 
-              case 29:
-                _this.preLooding = false;
-                _context2.next = 34;
+              case 30:
+                _this2.preLooding = false;
+                _context3.next = 35;
                 break;
 
-              case 32:
+              case 33:
                 Swal.fire({
                   title: 'দুঃখিত',
                   text: "\u099C\u09BE\u09A4\u09C0\u09DF \u09AA\u09B0\u09BF\u099A\u09DF\u09AA\u09A4\u09CD\u09B0 \u09A8\u0982 \u0985\u09AC\u09B6\u09CD\u09AF\u0987 \u09E7\u09E6 \u0985\u09A5\u09AC\u09BE \u09E7\u09E9 \u0985\u09A5\u09AC\u09BE \u09E7\u09ED \u09A1\u09BF\u099C\u09BF\u099F\u09C7\u09B0 \u09B9\u09A4\u09C7 \u09B9\u09AC\u09C7",
                   icon: 'error'
                 });
-                _this.preLooding = false;
-
-              case 34:
-                _this.getToken();
-
-                _this.preLooding = false;
-
-              case 36:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }))();
-    },
-    getToken: function getToken() {
-      var _this2 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-        var res;
-        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                _context3.next = 2;
-                return _this2.callApi('get', "https://uniontax.xyz/api/token/genarate", []);
-
-              case 2:
-                res = _context3.sent;
-                _this2.sToken = res.data.apitoken;
                 _this2.preLooding = false;
 
-              case 5:
+              case 35:
+                _this2.getToken();
+
+                _this2.preLooding = false;
+
+              case 37:
               case "end":
                 return _context3.stop();
             }
@@ -3501,7 +3589,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3);
       }))();
     },
-    getUser: function getUser() {
+    getToken: function getToken() {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
@@ -3511,15 +3599,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context4.prev = _context4.next) {
               case 0:
                 _context4.next = 2;
-                return _this3.callApi('get', "/api/single/user/".concat(localStorage.getItem('usertoken')), []);
+                return _this3.callApi('get', "https://uniontax.xyz/api/token/genarate", []);
 
               case 2:
                 res = _context4.sent;
-                console.log(res.data.nidbalance);
-                _this3.nidbalance = res.data.nidbalance;
+                _this3.sToken = res.data.apitoken;
                 _this3.preLooding = false;
 
-              case 6:
+              case 5:
               case "end":
                 return _context4.stop();
             }
@@ -3527,7 +3614,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee4);
       }))();
     },
-    updateUserBalace: function updateUserBalace(nidb) {
+    getUser: function getUser() {
       var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
@@ -3537,19 +3624,45 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context5.prev = _context5.next) {
               case 0:
                 _context5.next = 2;
-                return _this4.callApi('post', "/api/user/up/".concat(localStorage.getItem('usertoken'), "/").concat(nidb), []);
+                return _this4.callApi('get', "/api/single/user/".concat(localStorage.getItem('usertoken')), []);
 
               case 2:
                 res = _context5.sent;
+                console.log(res.data.nidbalance);
                 _this4.nidbalance = res.data.nidbalance;
                 _this4.preLooding = false;
 
-              case 5:
+              case 6:
               case "end":
                 return _context5.stop();
             }
           }
         }, _callee5);
+      }))();
+    },
+    updateUserBalace: function updateUserBalace(nidb) {
+      var _this5 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
+        var res;
+        return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.next = 2;
+                return _this5.callApi('post', "/api/user/up/".concat(localStorage.getItem('usertoken'), "/").concat(nidb), []);
+
+              case 2:
+                res = _context6.sent;
+                _this5.nidbalance = res.data.nidbalance;
+                _this5.preLooding = false;
+
+              case 5:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6);
       }))();
     }
   },
@@ -6385,7 +6498,11 @@ var render = function render() {
         _vm.$set(_vm.form, "dob", $event.target.value);
       }
     }
-  })]), _vm._v(" "), _vm._m(0)])])])]), _vm._v(" "), _vm.infoId ? _c("div", {
+  })]), _vm._v(" "), _vm._m(0)])])])]), _vm._v(" "), _c("button", {
+    on: {
+      click: _vm.openModal
+    }
+  }, [_vm._v("Open Modal")]), _vm._v(" "), _vm.infoId ? _c("div", {
     staticClass: "card"
   }, [_c("div", {
     staticClass: "card-body"
@@ -6429,13 +6546,228 @@ var render = function render() {
       href: "/dashboard/download/nid/" + _vm.infoId,
       target: "_blank"
     }
-  }, [_vm._v("Download")]), _vm._v(" "), _c("a", {
+  }, [_vm._v("Download")]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-info py-3 px-5",
-    attrs: {
-      href: "/dashboard/download/nid/" + _vm.infoId + "?type=full",
-      target: "_blank"
+    on: {
+      click: _vm.openModal
     }
-  }, [_vm._v("Full File Download")])])])]) : _vm._e()], 1);
+  }, [_vm._v("Full File Download")])])])]) : _vm._e(), _vm._v(" "), _c("div", {
+    staticClass: "modal2",
+    "class": {
+      open: _vm.showModal
+    }
+  }, [_c("div", {
+    staticClass: "modal2-content"
+  }, [_c("span", {
+    staticClass: "close",
+    on: {
+      click: _vm.closeModal
+    }
+  }, [_vm._v("×")]), _vm._v(" "), _c("p", [_vm._v("This is a modal!")]), _vm._v(" "), _c("div", {
+    staticClass: "card"
+  }, [_c("div", {
+    staticClass: "card-body"
+  }, [_c("div", {
+    staticClass: "container"
+  }, [_c("form", {
+    staticClass: "form",
+    on: {
+      submit: function submit($event) {
+        $event.stopPropagation();
+        $event.preventDefault();
+        return _vm.updatefile.apply(null, arguments);
+      }
+    }
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    attrs: {
+      "for": ""
+    }
+  }, [_vm._v("Blood Group")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.formstore.blood_group,
+      expression: "formstore.blood_group"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.formstore.blood_group
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.formstore, "blood_group", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    attrs: {
+      "for": ""
+    }
+  }, [_vm._v("Identification")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.formstore.identification,
+      expression: "formstore.identification"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.formstore.identification
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.formstore, "identification", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    attrs: {
+      "for": ""
+    }
+  }, [_vm._v("Phone")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.formstore.phone,
+      expression: "formstore.phone"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.formstore.phone
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.formstore, "phone", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    attrs: {
+      "for": ""
+    }
+  }, [_vm._v("Mobile")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.formstore.mobile,
+      expression: "formstore.mobile"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.formstore.mobile
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.formstore, "mobile", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    attrs: {
+      "for": ""
+    }
+  }, [_vm._v("Religion")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.formstore.religion,
+      expression: "formstore.religion"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.formstore.religion
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.formstore, "religion", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    attrs: {
+      "for": ""
+    }
+  }, [_vm._v("No Finger")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.formstore.no_finger,
+      expression: "formstore.no_finger"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.formstore.no_finger
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.formstore, "no_finger", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    attrs: {
+      "for": ""
+    }
+  }, [_vm._v("No Finger Print")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.formstore.no_finger_print,
+      expression: "formstore.no_finger_print"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.formstore.no_finger_print
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.formstore, "no_finger_print", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _vm._m(3)])])])])])])], 1);
 };
 
 var staticRenderFns = [function () {
@@ -6463,6 +6795,15 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("tr", [_c("td", [_vm._v("Blood Group")]), _vm._v(" "), _c("td", [_vm._v(": ")]), _vm._v(" "), _c("td", [_vm._v("-")])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "text-center"
+  }, [_c("button", {
+    staticClass: "btn-fill-lmd text-light gradient-dodger-blue btn-block"
+  }, [_vm._v("Download")])]);
 }];
 render._withStripped = true;
 
@@ -50340,7 +50681,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.nidInfoHead[data-v-0c6ef52f] {\n    font-size: 25px;\n    font-weight: 600;\n    border: 2px solid black;\n    padding: 18px 18px 22px 18px;\n    border-radius: 22px;\n    color: black;\n    width: 340px;\n    margin: 0 auto;\n    text-align: center;\n}\n.nidInfoImage[data-v-0c6ef52f] {\n    font-size: 25px;\n    font-weight: 600;\n    padding: 18px 18px 22px 18px;\n    border-radius: 22px;\n    color: black;\n    width: 215px;\n    margin: 0 auto;\n    text-align: center;\n}\ntable.nidInformation tr td[data-v-0c6ef52f] {\n    font-size: 20px;\n    font-weight: 600;\n    color: black;\n}\n.nAddress[data-v-0c6ef52f] {\n    font-size: 15px;\n    width: 300px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.modal2[data-v-0c6ef52f] {\n  display: none; /* Hidden by default */\n  position: fixed; /* Stay in place */\n  z-index: 1000; /* Sit on top */\n  left: 0;\n  top: 0;\n  width: 100%; /* Full width */\n  height: 100%; /* Full height */\n  overflow: auto; /* Enable scroll if needed */\n  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */\n}\n.modal2.open[data-v-0c6ef52f] {\n  display: block; /* Hidden by default */\n}\n\n/* Modal content */\n.modal2-content[data-v-0c6ef52f] {\n  background-color: #fefefe;\n  margin: 15% auto; /* 15% from the top and centered */\n  padding: 20px;\n  border: 1px solid #888;\n  width: 80%; /* Could be more or less, depending on screen size */\n}\n\n/* Close button */\n.close[data-v-0c6ef52f] {\n  color: #aaa;\n  float: right;\n  font-size: 28px;\n  font-weight: bold;\n}\n.close[data-v-0c6ef52f]:hover,\n.close[data-v-0c6ef52f]:focus {\n  color: black;\n  text-decoration: none;\n  cursor: pointer;\n}\n.nidInfoHead[data-v-0c6ef52f] {\n    font-size: 25px;\n    font-weight: 600;\n    border: 2px solid black;\n    padding: 18px 18px 22px 18px;\n    border-radius: 22px;\n    color: black;\n    width: 340px;\n    margin: 0 auto;\n    text-align: center;\n}\n.nidInfoImage[data-v-0c6ef52f] {\n    font-size: 25px;\n    font-weight: 600;\n    padding: 18px 18px 22px 18px;\n    border-radius: 22px;\n    color: black;\n    width: 215px;\n    margin: 0 auto;\n    text-align: center;\n}\ntable.nidInformation tr td[data-v-0c6ef52f] {\n    font-size: 20px;\n    font-weight: 600;\n    color: black;\n}\n.nAddress[data-v-0c6ef52f] {\n    font-size: 15px;\n    width: 300px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
