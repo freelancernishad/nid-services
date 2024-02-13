@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <button @click="openModal">Open Modal</button>
+
 
 
         <div class="card" v-if="infoId">
@@ -144,7 +144,18 @@
 
                         <div class="form-group">
                             <label for="">Blood Group</label>
-                            <input type="text" class="form-control" v-model="formstore.blood_group">
+                            <select class="form-control" v-model="formstore.blood_group">
+                                <option>Select</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                            </select>
+                            <!-- <input type="text" class="form-control" v-model="formstore.blood_group"> -->
                         </div>
 
 
@@ -156,7 +167,7 @@
 
                         <div class="form-group">
                             <label for="">Phone</label>
-                            <input type="text" class="form-control" v-model="formstore.phone">
+                            <input type="tel"  maxlength="11" minlength="11" class="form-control" v-model="formstore.phone">
                         </div>
 
 
@@ -167,15 +178,22 @@
 
                         <div class="form-group">
                             <label for="">Religion</label>
-                            <input type="text" class="form-control" v-model="formstore.religion">
+                            <select class="form-control" v-model="formstore.religion">
+                                <option>Select</option>
+                                <option>Islam</option>
+                                <option>Hinduism</option>
+                                <option>Christianity</option>
+                                <option>Buddhism</option>
+                            </select>
+                            <!-- <input type="text" class="form-control" v-model="formstore.religion"> -->
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group d-none">
                             <label for="">No Finger</label>
                             <input type="text" class="form-control" v-model="formstore.no_finger">
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group d-none">
                             <label for="">No Finger Print</label>
                             <input type="text" class="form-control" v-model="formstore.no_finger_print">
                         </div>
@@ -261,8 +279,8 @@ export default {
                 'phone' :'',
                 'mobile' :'',
                 'religion' :'',
-                'no_finger' :'',
-                'no_finger_print' :'',
+                'no_finger' :'0',
+                'no_finger_print' :'0',
             },
             nidinformations:{},
             infoId:'',
