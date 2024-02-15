@@ -328,7 +328,7 @@ class NidSearchedController extends Controller
             'presentPostCode' => 'required',
             'permanentDistrict' => 'required',
             'permanentThana' => 'required',
-            'permanentUnion' => 'required',
+            // 'permanentUnion' => 'required',
             'permanentPost' => 'required',
             'permanentPostCode' => 'required',
 
@@ -339,6 +339,7 @@ class NidSearchedController extends Controller
 
 
 
+        $validatedData['permanentUnion'] = $request->permanentUnion;
         $validatedData['spouseNameBN'] = $request->spouseNameBN;
         $validatedData['disability'] = '-';
         $validatedData['Disability_other'] = '-';

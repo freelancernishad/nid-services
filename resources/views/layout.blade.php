@@ -44,7 +44,7 @@
 
 
 
-<script src="{{ asset('js/backend.js?v=1.0.19') }}"></script>
+<script src="{{ asset('js/backend.js?v=1.0.20') }}"></script>
 
 
 
