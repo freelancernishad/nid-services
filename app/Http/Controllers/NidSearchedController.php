@@ -307,33 +307,58 @@ class NidSearchedController extends Controller
         $validatedData = $request->validate([
             'nidno' => 'required',
             'dob' => 'required|date',
-            'name_bn' => 'required',
-            'name_en' => 'required',
-            'father_name' => 'required',
-            'mother_name' => 'required',
-            'old_nid' => 'nullable',
-            'blood_group' => 'required',
-            'present_address' => 'required',
+            // 'name_bn' => 'required',
+            // 'name_en' => 'required',
+            // 'father_name' => 'required',
+            // 'mother_name' => 'required',
+            // 'old_nid' => 'nullable',
+            // 'blood_group' => 'required',
+            // 'present_address' => 'required',
             'userid' => 'required|exists:users,id',
 
 
-            'oldNationalIdNumber' => 'required',
+            // 'oldNationalIdNumber' => 'required',
 
-            'gender' => 'required',
-            'profession' => 'required',
-            'presentDistrict' => 'required',
-            'presentThana' => 'required',
-            'presentUnion' => 'required',
-            'presentPost' => 'required',
-            'presentPostCode' => 'required',
-            'permanentDistrict' => 'required',
-            'permanentThana' => 'required',
-            // 'permanentUnion' => 'required',
-            'permanentPost' => 'required',
-            'permanentPostCode' => 'required',
+            // 'gender' => 'required',
+            // 'profession' => 'required',
+            // 'presentDistrict' => 'required',
+            // 'presentThana' => 'required',
+            // 'presentUnion' => 'required',
+            // 'presentPost' => 'required',
+            // 'presentPostCode' => 'required',
+            // 'permanentDistrict' => 'required',
+            // 'permanentThana' => 'required',
+            // // 'permanentUnion' => 'required',
+            // 'permanentPost' => 'required',
+            // 'permanentPostCode' => 'required',
 
 
         ]);
+
+
+
+
+        $validatedData['name_bn'] = $request->name_bn;
+        $validatedData['name_en'] = $request->name_en;
+        $validatedData['father_name'] = $request->father_name;
+        $validatedData['mother_name'] = $request->mother_name;
+        $validatedData['old_nid'] = $request->old_nid;
+        $validatedData['blood_group'] = $request->blood_group;
+        $validatedData['present_address'] = $request->present_address;
+
+
+        $validatedData['oldNationalIdNumber'] = $request->oldNationalIdNumber;
+        $validatedData['gender'] = $request->gender;
+        $validatedData['profession'] = $request->profession;
+        $validatedData['presentDistrict'] = $request->presentDistrict;
+        $validatedData['presentThana'] = $request->presentThana;
+        $validatedData['presentUnion'] = $request->presentUnion;
+        $validatedData['presentPost'] = $request->presentPost;
+        $validatedData['presentPostCode'] = $request->presentPostCode;
+        $validatedData['permanentDistrict'] = $request->permanentDistrict;
+        $validatedData['permanentThana'] = $request->permanentThana;
+        $validatedData['permanentPost'] = $request->permanentPost;
+        $validatedData['permanentPostCode'] = $request->permanentPostCode;
 
 
 
