@@ -361,7 +361,7 @@ export default {
                                 this.form.image = nidD.photoUrl
                                 this.nidinformations= nidD
 
-
+                                console.log(nidD);
                                 this.formstore = {
                                     'nidno' :nidD.nationalIdNumber,
                                     'dob' :nidD.dateOfBirth,
@@ -417,6 +417,7 @@ export default {
 
                                 }
 
+                                console.log(this.formstore);
 
                                 var response = await this.callApi('post',`/api/nidsearched`,this.formstore);
 
