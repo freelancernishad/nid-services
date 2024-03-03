@@ -24,7 +24,7 @@ class BkashController extends Controller
         $bkash_app_secret = '2is7hdktrekvrbljjh44ll3d9l1dtjo4pasmjvs5vl5qr3fug4b'; // bKash Merchant API APP SECRET
         $bkash_username = 'sandboxTokenizedUser02'; // bKash Merchant API USERNAME
         $bkash_password = 'sandboxTokenizedUser02@12345'; // bKash Merchant API PASSWORD
-        $bkash_base_url = 'https://tokenized.sandbox.bka.sh/v1.2.0-beta'; // For Live Production URL: https://checkout.pay.bka.sh/v1.2.0-beta
+        $bkash_base_url = 'https://tokenized.sandbox.bka.sh/v1.2.0-beta/tokenized'; // For Live Production URL: https://checkout.pay.bka.sh/v1.2.0-beta
 
         $this->app_key = $bkash_app_key;
         $this->app_secret = $bkash_app_secret;
@@ -64,21 +64,25 @@ class BkashController extends Controller
             return $response;
         }
 
-        session()->put('bkash_token', $response['id_token']);
+        Session::put('bkash_token', $response['id_token']);
+        // session()->put('bkash_token', $response['id_token']);
 
-        return response()->json(['success', true]);
+
+        return response()->json(['success', true, $response]);
     }
 
     public function createPayment(Request $request)
     {
-        if (((string) $request->amount != (string) session()->get('bkash')['invoice_amount'])) {
-            return response()->json([
-                'errorMessage' => 'Amount Mismatch',
-                'errorCode' => 2006
-            ],422);
-        }
 
-        $token = session()->get('bkash_token');
+        // if (((string) $request->amount != (string) session()->get('bkash')['invoice_amount'])) {
+        //     return response()->json([
+        //         'errorMessage' => 'Amount Mismatch',
+        //         'errorCode' => 2006
+        //     ],422);
+        // }
+
+        // $token = session()->get('bkash_token');
+        $token = 'eyJraWQiOiJvTVJzNU9ZY0wrUnRXQ2o3ZEJtdlc5VDBEcytrckw5M1NzY0VqUzlERXVzPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJlODNlMDkwMC1jY2ZmLTQzYTctODhiNy0wNjE5NDJkMTVmOTYiLCJhdWQiOiI2cDdhcWVzZmljZTAxazltNWdxZTJhMGlhaCIsImV2ZW50X2lkIjoiZTdhMGI5N2EtMWIzOC00ZWIxLWI0OTUtZDQ2OGYzMTAzMWEzIiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE3MDk0MzY5MDIsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC5hcC1zb3V0aGVhc3QtMS5hbWF6b25hd3MuY29tXC9hcC1zb3V0aGVhc3QtMV9yYTNuUFkzSlMiLCJjb2duaXRvOnVzZXJuYW1lIjoic2FuZGJveFRva2VuaXplZFVzZXIwMiIsImV4cCI6MTcwOTQ0MDUwMiwiaWF0IjoxNzA5NDM2OTAyfQ.zfytXZY-Knn2wMYZmgXZ9dmMTZCTztdNwOMT-kJxX_ys72vi2lqjDgfv_KE7sSVy_iEk6Et0kwMhq0o7Hheqs_lPVnqKcFY5pJo1kjyeBLoKMp01cLz0FfN8WJrkZgG8w_TdAqiqM2-TYE-1oZWNZtp4IZlessys9JZRflORSFXQSCtbDRSDG-7pzp_V7_jgoSYn7_FpDhgT6W8AZM1E9CysNJypnIqHnZJO7h0DaR5ObA_OaKGg8gAWbhml4cYP8dTexi1e66ryTNRTWVkBtD2_HLS542q8tzfBfbXfJwb75xnSAAGU5Ob1mJTHxO-z2RiswKxzGGCn_eIqzFFhrg';
 
         $request['intent'] = 'sale';
         $request['currency'] = 'BDT';
@@ -105,7 +109,8 @@ class BkashController extends Controller
 
     public function executePayment(Request $request)
     {
-        $token = session()->get('bkash_token');
+        // $token = session()->get('bkash_token');
+        $token = 'eyJraWQiOiJvTVJzNU9ZY0wrUnRXQ2o3ZEJtdlc5VDBEcytrckw5M1NzY0VqUzlERXVzPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJlODNlMDkwMC1jY2ZmLTQzYTctODhiNy0wNjE5NDJkMTVmOTYiLCJhdWQiOiI2cDdhcWVzZmljZTAxazltNWdxZTJhMGlhaCIsImV2ZW50X2lkIjoiZTdhMGI5N2EtMWIzOC00ZWIxLWI0OTUtZDQ2OGYzMTAzMWEzIiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE3MDk0MzY5MDIsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC5hcC1zb3V0aGVhc3QtMS5hbWF6b25hd3MuY29tXC9hcC1zb3V0aGVhc3QtMV9yYTNuUFkzSlMiLCJjb2duaXRvOnVzZXJuYW1lIjoic2FuZGJveFRva2VuaXplZFVzZXIwMiIsImV4cCI6MTcwOTQ0MDUwMiwiaWF0IjoxNzA5NDM2OTAyfQ.zfytXZY-Knn2wMYZmgXZ9dmMTZCTztdNwOMT-kJxX_ys72vi2lqjDgfv_KE7sSVy_iEk6Et0kwMhq0o7Hheqs_lPVnqKcFY5pJo1kjyeBLoKMp01cLz0FfN8WJrkZgG8w_TdAqiqM2-TYE-1oZWNZtp4IZlessys9JZRflORSFXQSCtbDRSDG-7pzp_V7_jgoSYn7_FpDhgT6W8AZM1E9CysNJypnIqHnZJO7h0DaR5ObA_OaKGg8gAWbhml4cYP8dTexi1e66ryTNRTWVkBtD2_HLS542q8tzfBfbXfJwb75xnSAAGU5Ob1mJTHxO-z2RiswKxzGGCn_eIqzFFhrg';
 
         $paymentID = $request->paymentID;
         $url = curl_init("$this->base_url/checkout/payment/execute/" . $paymentID);
@@ -126,8 +131,10 @@ class BkashController extends Controller
 
     public function queryPayment(Request $request)
     {
-        $token = session()->get('bkash_token');
-        $paymentID = $request->payment_info['payment_id'];
+        // $token = session()->get('bkash_token');
+        $token = 'eyJraWQiOiJvTVJzNU9ZY0wrUnRXQ2o3ZEJtdlc5VDBEcytrckw5M1NzY0VqUzlERXVzPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJlODNlMDkwMC1jY2ZmLTQzYTctODhiNy0wNjE5NDJkMTVmOTYiLCJhdWQiOiI2cDdhcWVzZmljZTAxazltNWdxZTJhMGlhaCIsImV2ZW50X2lkIjoiZTdhMGI5N2EtMWIzOC00ZWIxLWI0OTUtZDQ2OGYzMTAzMWEzIiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE3MDk0MzY5MDIsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC5hcC1zb3V0aGVhc3QtMS5hbWF6b25hd3MuY29tXC9hcC1zb3V0aGVhc3QtMV9yYTNuUFkzSlMiLCJjb2duaXRvOnVzZXJuYW1lIjoic2FuZGJveFRva2VuaXplZFVzZXIwMiIsImV4cCI6MTcwOTQ0MDUwMiwiaWF0IjoxNzA5NDM2OTAyfQ.zfytXZY-Knn2wMYZmgXZ9dmMTZCTztdNwOMT-kJxX_ys72vi2lqjDgfv_KE7sSVy_iEk6Et0kwMhq0o7Hheqs_lPVnqKcFY5pJo1kjyeBLoKMp01cLz0FfN8WJrkZgG8w_TdAqiqM2-TYE-1oZWNZtp4IZlessys9JZRflORSFXQSCtbDRSDG-7pzp_V7_jgoSYn7_FpDhgT6W8AZM1E9CysNJypnIqHnZJO7h0DaR5ObA_OaKGg8gAWbhml4cYP8dTexi1e66ryTNRTWVkBtD2_HLS542q8tzfBfbXfJwb75xnSAAGU5Ob1mJTHxO-z2RiswKxzGGCn_eIqzFFhrg';
+        // $paymentID = $request->payment_info['payment_id'];
+        $paymentID = 445588;
 
         $url = curl_init("$this->base_url/checkout/payment/query/" . $paymentID);
         $header = array(
