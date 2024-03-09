@@ -115,6 +115,7 @@
 
                 <div class="text-center">
                     <a :href="'/dashboard/download/nid/'+infoId" target="_blank" class="btn btn-info py-3 px-5">Download</a>
+                    <a :href="'/dashboard/download/nid/'+infoId+'?type=format2'" target="_blank" class="btn btn-info py-3 px-5">Download 2</a>
 
 
                     <button class="btn btn-info py-3 px-5" @click="openModal">Full File Download</button>
