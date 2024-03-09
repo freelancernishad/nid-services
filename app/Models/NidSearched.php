@@ -22,6 +22,7 @@ class NidSearched extends Model
         'old_nid',
         'blood_group',
         'present_address',
+        'permanent_address',
         'userid',
         'search_date',
         'photo',

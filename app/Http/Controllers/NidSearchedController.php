@@ -85,6 +85,7 @@ class NidSearchedController extends Controller
         ]);
 
 
+        // return $request->all();
 
 
         $validatedData['name_bn'] = $request->name_bn;
@@ -94,6 +95,7 @@ class NidSearchedController extends Controller
         $validatedData['old_nid'] = $request->old_nid;
         $validatedData['blood_group'] = $request->blood_group;
         $validatedData['present_address'] = $request->present_address;
+        $validatedData['permanent_address'] = $request->permanent_address;
 
 
         $validatedData['oldNationalIdNumber'] = $request->oldNationalIdNumber;
@@ -317,3 +319,6 @@ class NidSearchedController extends Controller
 
 
 }
+
+
+

@@ -241,6 +241,7 @@ export default {
                 'old_nid' :'',
                 'blood_group' :'',
                 'present_address' :'',
+                'permanent_address' :'',
                 'userid' :'',
                 'search_date' :'',
 
@@ -371,7 +372,8 @@ export default {
                                     'mother_name' :nidD.mothersNameBN,
                                     'old_nid' :nidD.oldNationalIdNumber,
                                     'blood_group' :'-',
-                                    'present_address' :nidD.permanentAddressBN,
+                                    'present_address' :nidD.presentAddressBN,
+                                    'permanent_address' :nidD.permanentAddressBN,
                                     'userid' :localStorage.getItem('userid'),
                                     'photo' :nidD.photoUrl,
 

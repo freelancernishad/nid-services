@@ -111,7 +111,7 @@ function fullformat($nidinformations){
         <tr>
             <td width='80%'>
                 <table width='100%' class='border'  >
-                    <tr><td width='20%'>National ID </td> <td width='80%' colspan='4'> $nidinformations->nidno  </td></tr>
+                    <tr><td width='20%'>National ID </td> <td width='80%' colspan='4' > $nidinformations->nidno  </td></tr>
                     <tr><td>Pin </td> <td colspan='4'>  $nidinformations->oldNationalIdNumber </td></tr>
                     <tr><td>Status </td> <td colspan='4'> printed  </td></tr>
                     <tr><td>Name(Bangla)  </td> <td colspan='4' class='banglaFont'> $nidinformations->name_bn  </td></tr>
@@ -259,11 +259,21 @@ function fullformat($nidinformations){
 
 
 function format2($nidinformations) {
+
+
+    $qrdata = "$nidinformations->name_en $nidinformations->nidno $nidinformations->dob";
+
     $html = "
     <style>
 
     .mainborder{
         border:1px solid black;
+    }
+    .detailsTable tr td{
+        font-size:20px;
+    }
+    .enText{
+        font-size:16px !important;
     }
     .detailsHead{
         width:100%;
@@ -281,16 +291,16 @@ function format2($nidinformations) {
 
     <table width='100%'>
         <tr>
-            <td width='25%'>
+            <td width='25%' style='vertical-align: top; text-align:center;line-height:50px'>
             <div class='nidInfoImage'> <img width='130px' src='".base64('storage/'.$nidinformations->photo)."' alt=''></div>
 
-            <p>$nidinformations->name_en</p>
-            <div class='nidInfoImage'> <img width='130px' src='https://chart.apis.google.com/chart?cht=qr&chl=dsfgsdfsdfsdfsdfsdf&chs=250' alt=''></div>
+            <p style='font-size:13px; paddin-top:5px'>$nidinformations->name_en</p>
+            <div class='nidInfoImage'> <img width='130px' src='https://chart.apis.google.com/chart?cht=qr&chl=$qrdata&chs=250' alt=''></div>
 
 
             </td>
             <td width='75%'>
-                <table width='100%'>
+                <table width='100%' class='detailsTable'>
                     <tr>
                         <td colspan='2' style='background:#C6E5EA;padding:10px 10px' ><div class='detailsHead'>জাতীয় পরিচিতি তথ্য</div></td>
                     </tr>
@@ -299,7 +309,7 @@ function format2($nidinformations) {
 
                     <tr>
                         <td>জাতীয় পরিচয় পত্র নম্বর</td>
-                        <td>$nidinformations->nidno</td>
+                        <td class='enText' style='font-size:16px'>$nidinformations->nidno</td>
                     </tr>
 
 
@@ -335,12 +345,12 @@ function format2($nidinformations) {
 
                     <tr>
                         <td>নাম (ইংলিশ)</td>
-                        <td>$nidinformations->name_en</td>
+                        <td class='enText' style='font-size:16px'>$nidinformations->name_en</td>
                     </tr>
 
                     <tr>
                         <td>জন্ম তারিখ</td>
-                        <td>$nidinformations->dob</td>
+                        <td class='enText' style='font-size:16px'>$nidinformations->dob</td>
                     </tr>
 
                     <tr>
@@ -385,7 +395,7 @@ function format2($nidinformations) {
                     </tr>
 
                     <tr>
-                        <td colspan='2'></td>
+                        <td colspan='2'>$nidinformations->present_address</td>
                     </tr>
 
 
@@ -394,7 +404,7 @@ function format2($nidinformations) {
                     </tr>
 
                     <tr>
-                        <td colspan='2'></td>
+                        <td colspan='2'>$nidinformations->permanent_address</td>
                     </tr>
 
 
@@ -411,61 +421,18 @@ function format2($nidinformations) {
         </tr>
     </table>
 
+
+
+    <p style='font-size:13px;text-align:center;margin-bottom:20px'>
+    <span style='color:red;font-size:16px'>উপরে প্রদর্শিত তথ্যসমূহ জাতীয় পরিচয়পত্র সংশ্লিষ্ট, ভোটার তালিকার সাথে সরাসরি সম্পর্কযুক্ত নয়। </span> <br/>
+    This is Software Generated Report From Bangladesh Election Commission, Signature & Seal Aren't Required.
+    </p>
+
+
     </div>
 
 
 
-    <table width='100%' style='margin-bottom:50px'>
-    <tr>
-        <td></td>
-        <td style='text-align: center;'> <div class='nidInfoImage'> <img width='130px' src='".base64('storage/'.$nidinformations->photo)."' alt=''></div> </td>
-        <td></td>
-    </tr>
-</table>
-<table width='80%' style='margin:0 auto' class='nidInformation'>
-    <tr>
-        <td width='25%'>নাম</td>
-        <td width='5%'>: </td>
-        <td width='70%'> $nidinformations->name_bn </td>
-    </tr>
-    <tr>
-        <td style='font-size:15px'>Name</td>
-        <td>: </td>
-        <td style='font-size:15px'> $nidinformations->name_en </td>
-    </tr>
-    <tr>
-        <td>পিতা</td>
-        <td>: </td>
-        <td> $nidinformations->father_name </td>
-    </tr>
-    <tr>
-        <td>মাতা</td>
-        <td>: </td>
-        <td> $nidinformations->mother_name </td>
-    </tr>
-    <tr>
-        <td style='font-size:15px'>Date of Birth</td>
-        <td>: </td>
-        <td style='font-size:15px'> $nidinformations->dob </td>
-    </tr>
-    <tr>
-        <td style='font-size:15px'>NID No.</td>
-        <td>: </td>
-        <td style='font-size:15px'> $nidinformations->nidno </td>
-    </tr>
-
-    <tr>
-        <td style='font-size:15px'>Blood Group</td>
-        <td>: </td>
-        <td>-</td>
-    </tr>
-
-    <tr class='nidAddress'>
-        <td style='font-weight:500'>বর্তমান ঠিকানা</td>
-        <td>: </td>
-        <td> <div class='nAddress'>  $nidinformations->present_address </div></td>
-    </tr>
-</table>
     ";
     return $html;
 }
