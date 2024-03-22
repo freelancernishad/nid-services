@@ -355,12 +355,12 @@ function format2($nidinformations) {
 
                     <tr>
                         <td>পিতার নাম </td>
-                        <td>$nidinformations->name_bn</td>
+                        <td>$nidinformations->father_name</td>
                     </tr>
 
                     <tr>
                         <td>মাতার নাম  </td>
-                        <td>$nidinformations->name_bn</td>
+                        <td>$nidinformations->mother_name</td>
                     </tr>
 
 
