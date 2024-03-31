@@ -41,6 +41,10 @@ return [
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
+        'protected' => [
+            'driver' => 'local',
+            'root' => storage_path('app/protected'), // Path to the protected storage folder
+        ],
 
         's3' => [
             'driver' => 's3',

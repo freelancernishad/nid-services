@@ -7,6 +7,7 @@ use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CategoryController;
 use  App\Http\Controllers\api\authController;
@@ -95,3 +96,31 @@ Route::post('set/featured/post',[BlogController::class,'setFiPost']);
 Route::get('get/blog/delete/{id}',[BlogController::class,'deleteblog']);
 Route::get('update/blog/{id}',[BlogController::class,'getblogEdit']);
 Route::post('update/blog',[BlogController::class,'updateblog']);
+
+
+
+
+
+    Route::post('/articles', [ArticleController::class, 'store']);
+    Route::get('/articles/{id}', [ArticleController::class, 'show']);
+    Route::post('/articles/{id}', [ArticleController::class, 'update']);
+    Route::delete('/articles/{id}', [ArticleController::class, 'destroy']);
+    // Article routes
+    Route::get('/articles', [ArticleController::class, 'index']);
+    Route::get('/articles/by-category/{categoryId}', [ArticleController::class, 'getByCategory']);
+    Route::get('/articles/{id}', [ArticleController::class, 'show']);
+    Route::get('/article/{slug}', [ArticleController::class, 'showBySlug']);
+    Route::get('/articles/list/{slug}', [ArticleController::class, 'getArticlesBySlug']);
+
+    Route::get('/all/latest/articles', [ArticleController::class, 'getLatestarticles']);
+    Route::get('/all/related/articles/{articleSlug}', [ArticleController::class, 'getRelatedArticles']);
+
+
+
+    Route::post('/categories', [CategoryController::class, 'store']);
+    Route::post('/categories/{id}', [CategoryController::class, 'update']);
+    Route::delete('/categories/{id}', [CategoryController::class, 'destroy']);
+    // Category routes
+    Route::get('/categories', [CategoryController::class, 'index']);
+    Route::get('/categories/{id}', [CategoryController::class, 'show']);
+    Route::get('/categories/{id}/subcategories', [CategoryController::class, 'getSubcategories']);

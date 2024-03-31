@@ -1,8 +1,32 @@
 <template>
     <div>
+        <header>
+        <div class="top-head">
+            <div class="logo">
+                <h1><router-link :to="{name:'home'}">বর্ণমালা</router-link></h1>
+            </div>
+            <div class="login">
+                <p><router-link :to="{name:'/login'}">Get your access</router-link></p>
+            </div>
+        </div>
 
-            <slot></slot>
+        <nav class="navmenu">
+            <ul>
+                <li><router-link class="navt" :to="{name:'home'}">Home</router-link></li>
+                <li><router-link class="navt" :to="{name:'about'}">About</router-link></li>
+                <li><router-link class="navt" :to="{name:'blog'}">Blog</router-link></li>
+                <li><router-link class="navt" :to="{name:'contact'}">Contact & Support</router-link></li>
+            </ul>
+        </nav>
+    </header>
 
+        <slot></slot>
+
+
+
+            <footer>
+
+</footer>
 
     </div>
 </template>

@@ -43,7 +43,11 @@ Auth::routes([
 Route::post('login', [LoginController::class, 'login']);
 Route::post('logout', [LoginController::class, 'logout']);
 
+Route::get('/files/{path}', function ($path) {
 
+    // Serve the file from the protected disk
+    return response()->file(Storage::disk('protected')->path($path));
+})->where('path', '.*');
 
 
 // Route::group(['middleware' => ['is_admin']], function() {
@@ -72,3 +76,5 @@ Route::get('/{vue_capture?}', function () {
 
     return view('frontlayout',compact('latestpost'));
 })->where('vue_capture', '.*')->name('frontend');
+
+
