@@ -4,7 +4,7 @@
         <div class="banner1">
             <div class="banner">
                 <div class="bsite1">
-                    <img class="bimg" src="source/banner.png" alt="">
+                    <img class="bimg" :src="$asseturl+'source/banner.png'" alt="">
                 </div>
                 <div class="bsite2">
                     <p class="bs1">Spark Creativity.</p>
