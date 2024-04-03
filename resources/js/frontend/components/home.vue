@@ -27,7 +27,7 @@
                                 <p class="number">01</p>
                             </div>
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="pbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="pbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                         </div>
                         <div class="pblog2">
@@ -42,7 +42,7 @@
                                 <p class="number">02</p>
                             </div>
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="pbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="pbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                         </div>
                         <div class="pblog2">
@@ -57,7 +57,7 @@
                                 <p class="number">03</p>
                             </div>
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="pbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="pbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                         </div>
                         <div class="pblog2">
@@ -73,7 +73,7 @@
                                 <p class="number">04</p>
                             </div>
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="pbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="pbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                         </div>
                         <div class="pblog2">
@@ -88,7 +88,7 @@
                                 <p class="number">05</p>
                             </div>
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="pbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="pbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                         </div>
                         <div class="pblog2">
@@ -103,7 +103,7 @@
                                 <p class="number">06</p>
                             </div>
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="pbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="pbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                         </div>
                         <div class="pblog2">
@@ -128,7 +128,7 @@
                     </div>
                     <div class="rbblog2">
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                     </div>
                 </div>
@@ -141,7 +141,7 @@
                     </div>
                     <div class="rbblog2">
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                     </div>
                 </div>
@@ -154,7 +154,7 @@
                     </div>
                     <div class="rbblog2">
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                     </div>
                 </div>
@@ -167,7 +167,7 @@
                     </div>
                     <div class="rbblog2">
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                     </div>
                 </div>
@@ -180,7 +180,7 @@
                     </div>
                     <div class="rbblog2">
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                     </div>
                 </div>
@@ -193,7 +193,7 @@
                     </div>
                     <div class="rbblog2">
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                     </div>
                 </div>
@@ -206,7 +206,7 @@
                     </div>
                     <div class="rbblog2">
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                     </div>
                 </div>
@@ -219,7 +219,7 @@
                     </div>
                     <div class="rbblog2">
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                     </div>
                 </div>
@@ -232,7 +232,7 @@
                     </div>
                     <div class="rbblog2">
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                     </div>
                 </div>
@@ -245,7 +245,7 @@
                     </div>
                     <div class="rbblog2">
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                     </div>
                 </div>
@@ -258,7 +258,7 @@
                     </div>
                     <div class="rbblog2">
                             <div>
-                                <a href="#"><img class="rbimg" src="source/blog-img.jpg" alt="blog image"></a>
+                                <a href="#"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></a>
                             </div>
                     </div>
                 </div>
@@ -271,7 +271,7 @@
                     </div>
                     <div class="rbblog2">
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                     </div>
                 </div>
@@ -284,7 +284,7 @@
                     </div>
                     <div class="rbblog2">
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                     </div>
                 </div>
@@ -297,7 +297,7 @@
                     </div>
                     <div class="rbblog2">
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                     </div>
                 </div>
@@ -310,7 +310,7 @@
                     </div>
                     <div class="rbblog2">
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                     </div>
                 </div>
@@ -323,7 +323,7 @@
                     </div>
                     <div class="rbblog2">
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                     </div>
                 </div>
@@ -336,7 +336,7 @@
                     </div>
                     <div class="rbblog2">
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                     </div>
                 </div>
@@ -349,7 +349,7 @@
                     </div>
                     <div class="rbblog2">
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                     </div>
                 </div>
@@ -362,7 +362,7 @@
                     </div>
                     <div class="rbblog2">
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                     </div>
                 </div>
@@ -375,7 +375,7 @@
                     </div>
                     <div class="rbblog2">
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                     </div>
                 </div>
@@ -388,7 +388,7 @@
                     </div>
                     <div class="rbblog2">
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" src="source/blog-img.jpg" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
                             </div>
                     </div>
                 </div>

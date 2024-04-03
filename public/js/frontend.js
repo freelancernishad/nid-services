@@ -2977,7 +2977,7 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "pbimg",
     attrs: {
-      src: "source/blog-img.jpg",
+      src: _vm.$asseturl + "source/blog-img.jpg",
       alt: "blog image"
     }
   })])], 1)]), _vm._v(" "), _c("div", {
@@ -3022,7 +3022,7 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "pbimg",
     attrs: {
-      src: "source/blog-img.jpg",
+      src: _vm.$asseturl + "source/blog-img.jpg",
       alt: "blog image"
     }
   })])], 1)]), _vm._v(" "), _c("div", {
@@ -3067,7 +3067,7 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "pbimg",
     attrs: {
-      src: "source/blog-img.jpg",
+      src: _vm.$asseturl + "source/blog-img.jpg",
       alt: "blog image"
     }
   })])], 1)]), _vm._v(" "), _c("div", {
@@ -3112,7 +3112,7 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "pbimg",
     attrs: {
-      src: "source/blog-img.jpg",
+      src: _vm.$asseturl + "source/blog-img.jpg",
       alt: "blog image"
     }
   })])], 1)]), _vm._v(" "), _c("div", {
@@ -3157,7 +3157,7 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "pbimg",
     attrs: {
-      src: "source/blog-img.jpg",
+      src: _vm.$asseturl + "source/blog-img.jpg",
       alt: "blog image"
     }
   })])], 1)]), _vm._v(" "), _c("div", {
@@ -3202,7 +3202,7 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "pbimg",
     attrs: {
-      src: "source/blog-img.jpg",
+      src: _vm.$asseturl + "source/blog-img.jpg",
       alt: "blog image"
     }
   })])], 1)]), _vm._v(" "), _c("div", {
@@ -3290,7 +3290,7 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "rbimg",
     attrs: {
-      src: "source/blog-img.jpg",
+      src: _vm.$asseturl + "source/blog-img.jpg",
       alt: "blog image"
     }
   })])], 1)])]), _vm._v(" "), _c("div", {
@@ -3346,7 +3346,7 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "rbimg",
     attrs: {
-      src: "source/blog-img.jpg",
+      src: _vm.$asseturl + "source/blog-img.jpg",
       alt: "blog image"
     }
   })])], 1)])]), _vm._v(" "), _c("div", {
@@ -3402,7 +3402,7 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "rbimg",
     attrs: {
-      src: "source/blog-img.jpg",
+      src: _vm.$asseturl + "source/blog-img.jpg",
       alt: "blog image"
     }
   })])], 1)])]), _vm._v(" "), _c("div", {
@@ -3458,7 +3458,7 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "rbimg",
     attrs: {
-      src: "source/blog-img.jpg",
+      src: _vm.$asseturl + "source/blog-img.jpg",
       alt: "blog image"
     }
   })])], 1)])]), _vm._v(" "), _c("div", {
@@ -3514,7 +3514,7 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "rbimg",
     attrs: {
-      src: "source/blog-img.jpg",
+      src: _vm.$asseturl + "source/blog-img.jpg",
       alt: "blog image"
     }
   })])], 1)])]), _vm._v(" "), _c("div", {
@@ -3570,7 +3570,7 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "rbimg",
     attrs: {
-      src: "source/blog-img.jpg",
+      src: _vm.$asseturl + "source/blog-img.jpg",
       alt: "blog image"
     }
   })])], 1)])]), _vm._v(" "), _c("div", {
@@ -3626,7 +3626,7 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "rbimg",
     attrs: {
-      src: "source/blog-img.jpg",
+      src: _vm.$asseturl + "source/blog-img.jpg",
       alt: "blog image"
     }
   })])], 1)])]), _vm._v(" "), _c("div", {
@@ -3682,7 +3682,7 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "rbimg",
     attrs: {
-      src: "source/blog-img.jpg",
+      src: _vm.$asseturl + "source/blog-img.jpg",
       alt: "blog image"
     }
   })])], 1)])]), _vm._v(" "), _c("div", {
@@ -3738,7 +3738,7 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "rbimg",
     attrs: {
-      src: "source/blog-img.jpg",
+      src: _vm.$asseturl + "source/blog-img.jpg",
       alt: "blog image"
     }
   })])], 1)])]), _vm._v(" "), _c("div", {
@@ -3794,7 +3794,7 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "rbimg",
     attrs: {
-      src: "source/blog-img.jpg",
+      src: _vm.$asseturl + "source/blog-img.jpg",
       alt: "blog image"
     }
   })])], 1)])]), _vm._v(" "), _c("div", {
@@ -3836,7 +3836,75 @@ var render = function render() {
         }
       }
     }
-  }, [_vm._v("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi perspiciatis dolor unde, doloribus optio harum modi officiis nesciunt ratione maiores?")])], 1), _vm._v(" "), _vm._m(24)]), _vm._v(" "), _vm._m(25)]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi perspiciatis dolor unde, doloribus optio harum modi officiis nesciunt ratione maiores?")])], 1), _vm._v(" "), _vm._m(24)]), _vm._v(" "), _c("div", {
+    staticClass: "rbblog2"
+  }, [_c("div", [_c("a", {
+    attrs: {
+      href: "#"
+    }
+  }, [_c("img", {
+    staticClass: "rbimg",
+    attrs: {
+      src: _vm.$asseturl + "source/blog-img.jpg",
+      alt: "blog image"
+    }
+  })])])])]), _vm._v(" "), _c("div", {
+    staticClass: "reg-blog-post"
+  }, [_c("div", {
+    staticClass: "rblog1"
+  }, [_c("p", {
+    staticClass: "rb-category"
+  }, [_c("router-link", {
+    attrs: {
+      to: {
+        name: "singleblog",
+        params: {
+          slug: "slug"
+        }
+      }
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-outdent"
+  }), _vm._v(" UX Collective")])], 1), _vm._v(" "), _c("p", {
+    staticClass: "rb-title"
+  }, [_c("router-link", {
+    attrs: {
+      to: {
+        name: "singleblog",
+        params: {
+          slug: "slug"
+        }
+      }
+    }
+  }, [_vm._v("90% of designers are unhirable?")])], 1), _vm._v(" "), _c("p", {
+    staticClass: "rb-paragraph"
+  }, [_c("router-link", {
+    attrs: {
+      to: {
+        name: "singleblog",
+        params: {
+          slug: "slug"
+        }
+      }
+    }
+  }, [_vm._v("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi perspiciatis dolor unde, doloribus optio harum modi officiis nesciunt ratione maiores?")])], 1), _vm._v(" "), _vm._m(25)]), _vm._v(" "), _c("div", {
+    staticClass: "rbblog2"
+  }, [_c("div", [_c("router-link", {
+    attrs: {
+      to: {
+        name: "singleblog",
+        params: {
+          slug: "slug"
+        }
+      }
+    }
+  }, [_c("img", {
+    staticClass: "rbimg",
+    attrs: {
+      src: _vm.$asseturl + "source/blog-img.jpg",
+      alt: "blog image"
+    }
+  })])], 1)])]), _vm._v(" "), _c("div", {
     staticClass: "reg-blog-post"
   }, [_c("div", {
     staticClass: "rblog1"
@@ -3889,7 +3957,7 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "rbimg",
     attrs: {
-      src: "source/blog-img.jpg",
+      src: _vm.$asseturl + "source/blog-img.jpg",
       alt: "blog image"
     }
   })])], 1)])]), _vm._v(" "), _c("div", {
@@ -3945,7 +4013,7 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "rbimg",
     attrs: {
-      src: "source/blog-img.jpg",
+      src: _vm.$asseturl + "source/blog-img.jpg",
       alt: "blog image"
     }
   })])], 1)])]), _vm._v(" "), _c("div", {
@@ -4001,7 +4069,7 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "rbimg",
     attrs: {
-      src: "source/blog-img.jpg",
+      src: _vm.$asseturl + "source/blog-img.jpg",
       alt: "blog image"
     }
   })])], 1)])]), _vm._v(" "), _c("div", {
@@ -4057,7 +4125,7 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "rbimg",
     attrs: {
-      src: "source/blog-img.jpg",
+      src: _vm.$asseturl + "source/blog-img.jpg",
       alt: "blog image"
     }
   })])], 1)])]), _vm._v(" "), _c("div", {
@@ -4113,7 +4181,7 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "rbimg",
     attrs: {
-      src: "source/blog-img.jpg",
+      src: _vm.$asseturl + "source/blog-img.jpg",
       alt: "blog image"
     }
   })])], 1)])]), _vm._v(" "), _c("div", {
@@ -4169,7 +4237,7 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "rbimg",
     attrs: {
-      src: "source/blog-img.jpg",
+      src: _vm.$asseturl + "source/blog-img.jpg",
       alt: "blog image"
     }
   })])], 1)])]), _vm._v(" "), _c("div", {
@@ -4225,7 +4293,7 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "rbimg",
     attrs: {
-      src: "source/blog-img.jpg",
+      src: _vm.$asseturl + "source/blog-img.jpg",
       alt: "blog image"
     }
   })])], 1)])]), _vm._v(" "), _c("div", {
@@ -4281,7 +4349,7 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "rbimg",
     attrs: {
-      src: "source/blog-img.jpg",
+      src: _vm.$asseturl + "source/blog-img.jpg",
       alt: "blog image"
     }
   })])], 1)])]), _vm._v(" "), _c("div", {
@@ -4337,66 +4405,10 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "rbimg",
     attrs: {
-      src: "source/blog-img.jpg",
+      src: _vm.$asseturl + "source/blog-img.jpg",
       alt: "blog image"
     }
-  })])], 1)])]), _vm._v(" "), _c("div", {
-    staticClass: "reg-blog-post"
-  }, [_c("div", {
-    staticClass: "rblog1"
-  }, [_c("p", {
-    staticClass: "rb-category"
-  }, [_c("router-link", {
-    attrs: {
-      to: {
-        name: "singleblog",
-        params: {
-          slug: "slug"
-        }
-      }
-    }
-  }, [_c("i", {
-    staticClass: "fa-solid fa-outdent"
-  }), _vm._v(" UX Collective")])], 1), _vm._v(" "), _c("p", {
-    staticClass: "rb-title"
-  }, [_c("router-link", {
-    attrs: {
-      to: {
-        name: "singleblog",
-        params: {
-          slug: "slug"
-        }
-      }
-    }
-  }, [_vm._v("90% of designers are unhirable?")])], 1), _vm._v(" "), _c("p", {
-    staticClass: "rb-paragraph"
-  }, [_c("router-link", {
-    attrs: {
-      to: {
-        name: "singleblog",
-        params: {
-          slug: "slug"
-        }
-      }
-    }
-  }, [_vm._v("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi perspiciatis dolor unde, doloribus optio harum modi officiis nesciunt ratione maiores?")])], 1), _vm._v(" "), _vm._m(35)]), _vm._v(" "), _c("div", {
-    staticClass: "rbblog2"
-  }, [_c("div", [_c("router-link", {
-    attrs: {
-      to: {
-        name: "singleblog",
-        params: {
-          slug: "slug"
-        }
-      }
-    }
-  }, [_c("img", {
-    staticClass: "rbimg",
-    attrs: {
-      src: "source/blog-img.jpg",
-      alt: "blog image"
-    }
-  })])], 1)])])]), _vm._v(" "), _vm._m(36)]), _vm._v(" "), _vm._m(37)]);
+  })])], 1)])])]), _vm._v(" "), _vm._m(35)]), _vm._v(" "), _vm._m(36)]);
 };
 
 var staticRenderFns = [function () {
@@ -4632,23 +4644,6 @@ var staticRenderFns = [function () {
   }, [_c("i", {
     staticClass: "fa-solid fa-calendar-days"
   }), _vm._v(" Mar 6, 2024")]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
-    staticClass: "rbblog2"
-  }, [_c("div", [_c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("img", {
-    staticClass: "rbimg",
-    attrs: {
-      src: "source/blog-img.jpg",
-      alt: "blog image"
-    }
-  })])])]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
