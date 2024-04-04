@@ -22,7 +22,7 @@ export const routes = [
     { path:  `${prefix}`, component: home, name:'home',meta: { layout: layout } },
     { path:  `${prefix}about`, component: about, name:'about',meta: { layout: layout } },
     { path:  `${prefix}blog`, component: blog, name:'blog',meta: { layout: layout } },
-    { path:  `${prefix}blog/{slug}`, component: singleblog, name:'singleblog',meta: { layout: layout } },
+    { path:  `${prefix}blog/:slug`, component: singleblog, name:'singleblog',meta: { layout: layout } },
     { path:  `${prefix}contact-us`, component: contact, name:'contact',meta: { layout: layout } },
     { path:  `${prefix}termsAndCondition`, component: termsAndCondition, name:'termsAndCondition',meta: { layout: layout } },
     { path: `${prefix}login`, component: login, name:'/login',meta: { layout: blanklayout } },

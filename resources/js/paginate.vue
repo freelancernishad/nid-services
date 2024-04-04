@@ -1,7 +1,10 @@
 <template>
 
+
+
 <nav aria-label="Page navigation example" style="    background: transparent !important;" v-if="TotalRows>20">
             <ul class="pagination  justify-content-end">
+
                 <!-- <li class="page-item"><a class="page-link" href="#">Previous</a></li> -->
                 <li class="page-item" v-for="(pag,index) in TotalPage" :key="'p'+index" v-if="index==0 && pag.url">
                     <router-link class="page-link"
@@ -24,6 +27,7 @@
                 <!-- <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
             </ul>
         </nav>
+
 </template>
 <script>
 export default {

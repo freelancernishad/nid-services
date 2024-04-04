@@ -102,7 +102,7 @@ export default {
         '$route':  {
             handler(newValue, oldValue) {
 
-        // hello
+                this.blogsList();
 
 
       },

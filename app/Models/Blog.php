@@ -21,4 +21,8 @@ class Blog extends Model
         'read',
         'featured_post',
     ];
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'cat_id');
+    }
 }

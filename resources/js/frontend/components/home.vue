@@ -119,280 +119,27 @@
         <!-- regular blog -->
         <div class="blog2">
             <div class="reg-blog">
-                <div class="reg-blog-post">
+
+
+
+                <div class="reg-blog-post" v-for="(blog,index) in blogs" :key="index">
                     <div class="rblog1">
-                            <p class="rb-category"><router-link :to="{name:'singleblog',params:{slug:'slug'}}"><i class="fa-solid fa-outdent"></i> UX Collective</router-link></p>
-                            <p class="rb-title"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">Advice to my younger self and you after 20 years in programming</router-link></p>
-                            <p class="rb-paragraph"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi perspiciatis dolor unde, doloribus optio harum modi officiis nesciunt ratione maiores?</router-link></p>
-                            <p class="rb-date"><i class="fa-solid fa-calendar-days"></i> Mar 6, 2024</p>
+                            <p class="rb-category"><router-link :to="{name:'singleblog',params:{slug:blog.id}}"><i class="fa-solid fa-outdent"></i> {{ blog.category.name }}</router-link></p>
+                            <p class="rb-title"><router-link :to="{name:'singleblog',params:{slug:blog.id}}">{{ blog.title }}</router-link></p>
+                            <p class="rb-paragraph"><router-link :to="{name:'singleblog',params:{slug:blog.id}}">{{ blog.short_description }}</router-link></p>
+                            <p class="rb-date"><i class="fa-solid fa-calendar-days"></i> {{ blog.created_at }}</p>
                     </div>
                     <div class="rbblog2">
                             <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
+                                <router-link :to="{name:'singleblog',params:{slug:blog.id}}"><img class="rbimg" :src="$asseturl+blog.fiture" alt="blog image"></router-link>
                             </div>
                     </div>
                 </div>
-                <div class="reg-blog-post">
-                    <div class="rblog1">
-                            <p class="rb-category"><router-link :to="{name:'singleblog',params:{slug:'slug'}}"><i class="fa-solid fa-outdent"></i> UX Collective</router-link></p>
-                            <p class="rb-title"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">90% of designers are unhirable?</router-link></p>
-                            <p class="rb-paragraph"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi perspiciatis dolor unde, doloribus optio harum modi officiis nesciunt ratione maiores?</router-link></p>
-                            <p class="rb-date"><i class="fa-solid fa-calendar-days"></i> Mar 6, 2024</p>
-                    </div>
-                    <div class="rbblog2">
-                            <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
-                            </div>
-                    </div>
-                </div>
-                <div class="reg-blog-post">
-                    <div class="rblog1">
-                            <p class="rb-category"><router-link :to="{name:'singleblog',params:{slug:'slug'}}"><i class="fa-solid fa-outdent"></i> UX Collective</router-link></p>
-                            <p class="rb-title"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">90% of designers are unhirable?</router-link></p>
-                            <p class="rb-paragraph"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi perspiciatis dolor unde, doloribus optio harum modi officiis nesciunt ratione maiores?</router-link></p>
-                            <p class="rb-date"><i class="fa-solid fa-calendar-days"></i> Mar 6, 2024</p>
-                    </div>
-                    <div class="rbblog2">
-                            <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
-                            </div>
-                    </div>
-                </div>
-                <div class="reg-blog-post">
-                    <div class="rblog1">
-                            <p class="rb-category"><router-link :to="{name:'singleblog',params:{slug:'slug'}}"><i class="fa-solid fa-outdent"></i> UX Collective</router-link></p>
-                            <p class="rb-title"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">90% of designers are unhirable?</router-link></p>
-                            <p class="rb-paragraph"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi perspiciatis dolor unde, doloribus optio harum modi officiis nesciunt ratione maiores?</router-link></p>
-                            <p class="rb-date"><i class="fa-solid fa-calendar-days"></i> Mar 6, 2024</p>
-                    </div>
-                    <div class="rbblog2">
-                            <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
-                            </div>
-                    </div>
-                </div>
-                <div class="reg-blog-post">
-                    <div class="rblog1">
-                            <p class="rb-category"><router-link :to="{name:'singleblog',params:{slug:'slug'}}"><i class="fa-solid fa-outdent"></i> UX Collective</router-link></p>
-                            <p class="rb-title"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">90% of designers are unhirable?</router-link></p>
-                            <p class="rb-paragraph"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi perspiciatis dolor unde, doloribus optio harum modi officiis nesciunt ratione maiores?</router-link></p>
-                            <p class="rb-date"><i class="fa-solid fa-calendar-days"></i> Mar 6, 2024</p>
-                    </div>
-                    <div class="rbblog2">
-                            <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
-                            </div>
-                    </div>
-                </div>
-                <div class="reg-blog-post">
-                    <div class="rblog1">
-                            <p class="rb-category"><router-link :to="{name:'singleblog',params:{slug:'slug'}}"><i class="fa-solid fa-outdent"></i> UX Collective</router-link></p>
-                            <p class="rb-title"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">90% of designers are unhirable?</router-link></p>
-                            <p class="rb-paragraph"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi perspiciatis dolor unde, doloribus optio harum modi officiis nesciunt ratione maiores?</router-link></p>
-                            <p class="rb-date"><i class="fa-solid fa-calendar-days"></i> Mar 6, 2024</p>
-                    </div>
-                    <div class="rbblog2">
-                            <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
-                            </div>
-                    </div>
-                </div>
-                <div class="reg-blog-post">
-                    <div class="rblog1">
-                            <p class="rb-category"><router-link :to="{name:'singleblog',params:{slug:'slug'}}"><i class="fa-solid fa-outdent"></i> UX Collective</router-link></p>
-                            <p class="rb-title"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">90% of designers are unhirable?</router-link></p>
-                            <p class="rb-paragraph"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi perspiciatis dolor unde, doloribus optio harum modi officiis nesciunt ratione maiores?</router-link></p>
-                            <p class="rb-date"><i class="fa-solid fa-calendar-days"></i> Mar 6, 2024</p>
-                    </div>
-                    <div class="rbblog2">
-                            <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
-                            </div>
-                    </div>
-                </div>
-                <div class="reg-blog-post">
-                    <div class="rblog1">
-                            <p class="rb-category"><router-link :to="{name:'singleblog',params:{slug:'slug'}}"><i class="fa-solid fa-outdent"></i> UX Collective</router-link></p>
-                            <p class="rb-title"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">90% of designers are unhirable?</router-link></p>
-                            <p class="rb-paragraph"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi perspiciatis dolor unde, doloribus optio harum modi officiis nesciunt ratione maiores?</router-link></p>
-                            <p class="rb-date"><i class="fa-solid fa-calendar-days"></i> Mar 6, 2024</p>
-                    </div>
-                    <div class="rbblog2">
-                            <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
-                            </div>
-                    </div>
-                </div>
-                <div class="reg-blog-post">
-                    <div class="rblog1">
-                            <p class="rb-category"><router-link :to="{name:'singleblog',params:{slug:'slug'}}"><i class="fa-solid fa-outdent"></i> UX Collective</router-link></p>
-                            <p class="rb-title"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">90% of designers are unhirable?</router-link></p>
-                            <p class="rb-paragraph"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi perspiciatis dolor unde, doloribus optio harum modi officiis nesciunt ratione maiores?</router-link></p>
-                            <p class="rb-date"><i class="fa-solid fa-calendar-days"></i> Mar 6, 2024</p>
-                    </div>
-                    <div class="rbblog2">
-                            <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
-                            </div>
-                    </div>
-                </div>
-                <div class="reg-blog-post">
-                    <div class="rblog1">
-                            <p class="rb-category"><router-link :to="{name:'singleblog',params:{slug:'slug'}}"><i class="fa-solid fa-outdent"></i> UX Collective</router-link></p>
-                            <p class="rb-title"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">90% of designers are unhirable?</router-link></p>
-                            <p class="rb-paragraph"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi perspiciatis dolor unde, doloribus optio harum modi officiis nesciunt ratione maiores?</router-link></p>
-                            <p class="rb-date"><i class="fa-solid fa-calendar-days"></i> Mar 6, 2024</p>
-                    </div>
-                    <div class="rbblog2">
-                            <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
-                            </div>
-                    </div>
-                </div>
-                <div class="reg-blog-post">
-                    <div class="rblog1">
-                            <p class="rb-category"><router-link :to="{name:'singleblog',params:{slug:'slug'}}"><i class="fa-solid fa-outdent"></i> UX Collective</router-link></p>
-                            <p class="rb-title"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">90% of designers are unhirable?</router-link></p>
-                            <p class="rb-paragraph"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi perspiciatis dolor unde, doloribus optio harum modi officiis nesciunt ratione maiores?</router-link></p>
-                            <p class="rb-date"><i class="fa-solid fa-calendar-days"></i> Mar 6, 2024</p>
-                    </div>
-                    <div class="rbblog2">
-                            <div>
-                                <a href="#"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></a>
-                            </div>
-                    </div>
-                </div>
-                <div class="reg-blog-post">
-                    <div class="rblog1">
-                            <p class="rb-category"><router-link :to="{name:'singleblog',params:{slug:'slug'}}"><i class="fa-solid fa-outdent"></i> UX Collective</router-link></p>
-                            <p class="rb-title"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">90% of designers are unhirable?</router-link></p>
-                            <p class="rb-paragraph"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi perspiciatis dolor unde, doloribus optio harum modi officiis nesciunt ratione maiores?</router-link></p>
-                            <p class="rb-date"><i class="fa-solid fa-calendar-days"></i> Mar 6, 2024</p>
-                    </div>
-                    <div class="rbblog2">
-                            <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
-                            </div>
-                    </div>
-                </div>
-                <div class="reg-blog-post">
-                    <div class="rblog1">
-                            <p class="rb-category"><router-link :to="{name:'singleblog',params:{slug:'slug'}}"><i class="fa-solid fa-outdent"></i> UX Collective</router-link></p>
-                            <p class="rb-title"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">90% of designers are unhirable?</router-link></p>
-                            <p class="rb-paragraph"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi perspiciatis dolor unde, doloribus optio harum modi officiis nesciunt ratione maiores?</router-link></p>
-                            <p class="rb-date"><i class="fa-solid fa-calendar-days"></i> Mar 6, 2024</p>
-                    </div>
-                    <div class="rbblog2">
-                            <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
-                            </div>
-                    </div>
-                </div>
-                <div class="reg-blog-post">
-                    <div class="rblog1">
-                            <p class="rb-category"><router-link :to="{name:'singleblog',params:{slug:'slug'}}"><i class="fa-solid fa-outdent"></i> UX Collective</router-link></p>
-                            <p class="rb-title"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">90% of designers are unhirable?</router-link></p>
-                            <p class="rb-paragraph"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi perspiciatis dolor unde, doloribus optio harum modi officiis nesciunt ratione maiores?</router-link></p>
-                            <p class="rb-date"><i class="fa-solid fa-calendar-days"></i> Mar 6, 2024</p>
-                    </div>
-                    <div class="rbblog2">
-                            <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
-                            </div>
-                    </div>
-                </div>
-                <div class="reg-blog-post">
-                    <div class="rblog1">
-                            <p class="rb-category"><router-link :to="{name:'singleblog',params:{slug:'slug'}}"><i class="fa-solid fa-outdent"></i> UX Collective</router-link></p>
-                            <p class="rb-title"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">90% of designers are unhirable?</router-link></p>
-                            <p class="rb-paragraph"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi perspiciatis dolor unde, doloribus optio harum modi officiis nesciunt ratione maiores?</router-link></p>
-                            <p class="rb-date"><i class="fa-solid fa-calendar-days"></i> Mar 6, 2024</p>
-                    </div>
-                    <div class="rbblog2">
-                            <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
-                            </div>
-                    </div>
-                </div>
-                <div class="reg-blog-post">
-                    <div class="rblog1">
-                            <p class="rb-category"><router-link :to="{name:'singleblog',params:{slug:'slug'}}"><i class="fa-solid fa-outdent"></i> UX Collective</router-link></p>
-                            <p class="rb-title"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">90% of designers are unhirable?</router-link></p>
-                            <p class="rb-paragraph"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi perspiciatis dolor unde, doloribus optio harum modi officiis nesciunt ratione maiores?</router-link></p>
-                            <p class="rb-date"><i class="fa-solid fa-calendar-days"></i> Mar 6, 2024</p>
-                    </div>
-                    <div class="rbblog2">
-                            <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
-                            </div>
-                    </div>
-                </div>
-                <div class="reg-blog-post">
-                    <div class="rblog1">
-                            <p class="rb-category"><router-link :to="{name:'singleblog',params:{slug:'slug'}}"><i class="fa-solid fa-outdent"></i> UX Collective</router-link></p>
-                            <p class="rb-title"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">90% of designers are unhirable?</router-link></p>
-                            <p class="rb-paragraph"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi perspiciatis dolor unde, doloribus optio harum modi officiis nesciunt ratione maiores?</router-link></p>
-                            <p class="rb-date"><i class="fa-solid fa-calendar-days"></i> Mar 6, 2024</p>
-                    </div>
-                    <div class="rbblog2">
-                            <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
-                            </div>
-                    </div>
-                </div>
-                <div class="reg-blog-post">
-                    <div class="rblog1">
-                            <p class="rb-category"><router-link :to="{name:'singleblog',params:{slug:'slug'}}"><i class="fa-solid fa-outdent"></i> UX Collective</router-link></p>
-                            <p class="rb-title"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">90% of designers are unhirable?</router-link></p>
-                            <p class="rb-paragraph"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi perspiciatis dolor unde, doloribus optio harum modi officiis nesciunt ratione maiores?</router-link></p>
-                            <p class="rb-date"><i class="fa-solid fa-calendar-days"></i> Mar 6, 2024</p>
-                    </div>
-                    <div class="rbblog2">
-                            <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
-                            </div>
-                    </div>
-                </div>
-                <div class="reg-blog-post">
-                    <div class="rblog1">
-                            <p class="rb-category"><router-link :to="{name:'singleblog',params:{slug:'slug'}}"><i class="fa-solid fa-outdent"></i> UX Collective</router-link></p>
-                            <p class="rb-title"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">90% of designers are unhirable?</router-link></p>
-                            <p class="rb-paragraph"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi perspiciatis dolor unde, doloribus optio harum modi officiis nesciunt ratione maiores?</router-link></p>
-                            <p class="rb-date"><i class="fa-solid fa-calendar-days"></i> Mar 6, 2024</p>
-                    </div>
-                    <div class="rbblog2">
-                            <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
-                            </div>
-                    </div>
-                </div>
-                <div class="reg-blog-post">
-                    <div class="rblog1">
-                            <p class="rb-category"><router-link :to="{name:'singleblog',params:{slug:'slug'}}"><i class="fa-solid fa-outdent"></i> UX Collective</router-link></p>
-                            <p class="rb-title"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">90% of designers are unhirable?</router-link></p>
-                            <p class="rb-paragraph"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi perspiciatis dolor unde, doloribus optio harum modi officiis nesciunt ratione maiores?</router-link></p>
-                            <p class="rb-date"><i class="fa-solid fa-calendar-days"></i> Mar 6, 2024</p>
-                    </div>
-                    <div class="rbblog2">
-                            <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
-                            </div>
-                    </div>
-                </div>
-                <div class="reg-blog-post">
-                    <div class="rblog1">
-                            <p class="rb-category"><router-link :to="{name:'singleblog',params:{slug:'slug'}}"><i class="fa-solid fa-outdent"></i> UX Collective</router-link></p>
-                            <p class="rb-title"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">90% of designers are unhirable?</router-link></p>
-                            <p class="rb-paragraph"><router-link :to="{name:'singleblog',params:{slug:'slug'}}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi perspiciatis dolor unde, doloribus optio harum modi officiis nesciunt ratione maiores?</router-link></p>
-                            <p class="rb-date"><i class="fa-solid fa-calendar-days"></i> Mar 6, 2024</p>
-                    </div>
-                    <div class="rbblog2">
-                            <div>
-                                <router-link :to="{name:'singleblog',params:{slug:'slug'}}"><img class="rbimg" :src="$asseturl+'source/blog-img.jpg'" alt="blog image"></router-link>
-                            </div>
-                    </div>
-                </div>
+
+                <Pagination :total-rows="TotalRows" :route-name="RouteName" :route-params="RouteParams" :total-page="Totalpage"></Pagination>
+
             </div>
+
 
             <div class="reg-blog2">
                 <hr class="hr2">
@@ -432,12 +179,57 @@ export default {
     },
     data() {
         return {
-
+            preLooding:false,
+            blogs:{},
+            PerPageData: '20',
+            TotalRows: '1',
+            Totalpage: [],
+            RouteName:'blog',
+            RouteParams:{},
+            pageNO: 1,
         };
     },
+    watch: {
+        '$route':  {
+            handler(newValue, oldValue) {
+
+                this.blogsList();
+
+
+      },
+      deep: true
+
+
+
+        }
+    },
     mounted() {
+        this.blogsList();
     },
     methods: {
+
+
+        async blogsList(){
+
+            this.preLooding = true
+            var page = 1;
+            if (this.$route.query.page) page = this.$route.query.page;
+
+            var res = await this.callApi('get',`/api/get/blog/list?page=${page}`,[]);
+            this.blogs = res.data.data
+            this.TotalRows = `${res.data.total}`;
+            this.PerPageData = `${res.data.per_page}`;
+            this.Totalpage = res.data.links
+            if(page==1){
+                this.pageNO = 1;
+            }else{
+                this.pageNO = (page-1)*this.PerPageData+1;
+            }
+
+
+                this.preLooding = false
+        },
+
 
     },
 };

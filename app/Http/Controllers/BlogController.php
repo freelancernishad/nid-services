@@ -28,7 +28,7 @@ class BlogController extends Controller
         }
 
 
-        return Blog::orderBy('id','desc')->paginate($page);
+        return Blog::with('category')->orderBy('id','desc')->paginate($page);
     }
 
 
@@ -107,9 +107,9 @@ class BlogController extends Controller
     }
         public function getblogEdit(Request $request,$id)
         {
-           $blogs =  Blog::find($id);
+           $blogs =  Blog::with('category')->find($id);
            $data = $blogs;
-           $data['Images'] =  asset($data->Images);
+           $data['fiture'] =  asset($data->fiture);
 
            return $data;
         }
