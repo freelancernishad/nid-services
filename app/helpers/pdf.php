@@ -287,7 +287,7 @@ function format2($nidinformations) {
     <div class='mainborder'>
 
 
-    <img width='100%' src='".base64('nidbg.png')."' alt=''>
+    <img width='100%' src='".base64('nid_2.png')."' alt=''>
 
     <table width='100%'>
         <tr>
@@ -295,7 +295,7 @@ function format2($nidinformations) {
             <div class='nidInfoImage'> <img width='130px' src='".base64('storage/'.$nidinformations->photo)."' alt=''></div>
 
             <p style='font-size:13px; paddin-top:5px'>$nidinformations->name_en</p>
-            <div class='nidInfoImage'> <img width='130px' src='https://chart.apis.google.com/chart?cht=qr&chl=$qrdata&chs=250' alt=''></div>
+            <div class='nidInfoImage'> <img width='130px' src='https://api.qrserver.com/v1/create-qr-code/?data=$qrdata&size=250x250' alt=''></div>
 
 
             </td>
@@ -370,17 +370,17 @@ function format2($nidinformations) {
 
                     <tr>
                         <td>লিঙ্গ</td>
-                        <td></td>
+                        <td>$nidinformations->gender</td>
                     </tr>
 
                     <tr>
                         <td>স্বামী/স্ত্রী</td>
-                        <td></td>
+                        <td>$nidinformations->spouseNameBN</td>
                     </tr>
 
                     <tr>
                         <td>ধর্ম</td>
-                        <td></td>
+                        <td>$nidinformations->religion</td>
                     </tr>
 
                     <tr>

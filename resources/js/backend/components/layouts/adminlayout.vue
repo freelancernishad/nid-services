@@ -242,7 +242,7 @@
 
 
 
-                         <li class="nav-item sidebar-nav-item" :class="{ active: selected == 101 }">
+                         <li class="nav-item sidebar-nav-item" :class="{ active: selected == 101 }"  v-if="$localStorage.getItem('role')=='admin'">
                             <a href="javascript:void(0)" class="nav-link" @click="submenu(101)"><i
                                     class="flaticon-technological"></i><span>Blogs</span>
                             </a>
