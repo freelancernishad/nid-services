@@ -252,6 +252,11 @@ function fullformat($nidinformations){
         </tr>
     </table>
 
+    <p style='font-size:13px;text-align:center;margin-bottom:20px'>
+    <span style='color:red;font-size:16px'>উপরে প্রদর্শিত তথ্যসমূহ জাতীয় পরিচয়পত্র সংশ্লিষ্ট, ভোটার তালিকার সাথে সরাসরি সম্পর্কযুক্ত নয়। </span> <br/>
+    This is Software Generated Report From Bangladesh Election Commission, Signature & Seal Aren't Required.
+    </p>
+
 
     ";
 
@@ -315,22 +320,22 @@ function format2($nidinformations) {
 
                     <tr>
                         <td>ভোটার নম্বর</td>
-                        <td></td>
+                        <td>-</td>
                     </tr>
 
                     <tr>
                         <td>ভোটার এরিয়া কোড </td>
-                        <td></td>
+                        <td>-</td>
                     </tr>
 
                     <tr>
                         <td>সিরিয়াল নম্বর</td>
-                        <td></td>
+                        <td>-</td>
                     </tr>
 
                     <tr>
                         <td>ভোটার এলাকা</td>
-                        <td></td>
+                        <td>-</td>
                     </tr>
 
 
@@ -385,7 +390,7 @@ function format2($nidinformations) {
 
                     <tr>
                         <td>জন্মস্থান</td>
-                        <td></td>
+                        <td>-</td>
                     </tr>
 
 
